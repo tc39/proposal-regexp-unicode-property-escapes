@@ -49,3 +49,103 @@ This proposal solves all the abovementioned problems:
 * There is no dependency on run-time libraries.
 * The regular expressions patterns are compact and readable — no more file size bloat.
 * Creating a script that generates the regular expression at build time is no longer necessary.
+
+## Illustrative examples
+
+### Unicode-aware version of `\d`
+
+To support any numeric symbol in Unicode rather than just ASCII `[0-9]`, use `\p{Number}` instead of `\d`.
+
+```js
+const regex = /^\p{Number}+$/u;
+regex.test('²³¹¼½¾𝟏𝟐𝟑𝟜𝟝𝟞𝟩𝟪𝟫𝟬𝟭𝟮𝟯𝟺𝟻𝟼㉛㉜㉝');
+// → true
+```
+
+### Unicode-aware version of `\w`
+
+To support any word symbol in Unicode rather than just ASCII `[a-zA-Z0-9_]`, use `[\p{Letter}\p{Number}\p{Connector_Punctuation}\p{Mark}]`.
+
+```js
+const regex = /([\p{Letter}\p{Number}\p{Connector_Punctuation}\p{Mark}]+)/gu;
+const text = `
+Amharic: የኔ ማንዣበቢያ መኪና በዓሣዎች ተሞልቷል
+Bengali: আমার হভারক্রাফ্ট কুঁচে মাছ-এ ভরা হয়ে গেছে
+Georgian: ჩემი ხომალდი საჰაერო ბალიშზე სავსეა გველთევზებით
+Macedonian: Моето летачко возило е полно со јагули
+Vietnamese: Tàu cánh ngầm của tôi đầy lươn
+`;
+
+let match;
+while (match = regex.exec(text)) {
+  const word = match[1];
+  console.log(`Matched word with length ${ word.length }: ${ word }`);
+}
+```
+
+Console output:
+
+```
+Matched word with length 7: Amharic
+Matched word with length 2: የኔ
+Matched word with length 6: ማንዣበቢያ
+Matched word with length 3: መኪና
+Matched word with length 5: በዓሣዎች
+Matched word with length 5: ተሞልቷል
+Matched word with length 7: Bengali
+Matched word with length 4: আমার
+Matched word with length 11: হভারক্রাফ্ট
+Matched word with length 5: কুঁচে
+Matched word with length 3: মাছ
+Matched word with length 1: এ
+Matched word with length 3: ভরা
+Matched word with length 3: হয়ে
+Matched word with length 4: গেছে
+Matched word with length 8: Georgian
+Matched word with length 4: ჩემი
+Matched word with length 7: ხომალდი
+Matched word with length 7: საჰაერო
+Matched word with length 7: ბალიშზე
+Matched word with length 6: სავსეა
+Matched word with length 12: გველთევზებით
+Matched word with length 10: Macedonian
+Matched word with length 5: Моето
+Matched word with length 7: летачко
+Matched word with length 6: возило
+Matched word with length 1: е
+Matched word with length 5: полно
+Matched word with length 2: со
+Matched word with length 6: јагули
+Matched word with length 10: Vietnamese
+Matched word with length 3: Tàu
+Matched word with length 4: cánh
+Matched word with length 4: ngầm
+Matched word with length 3: của
+Matched word with length 3: tôi
+Matched word with length 3: đầy
+Matched word with length 4: lươn
+```
+
+### Other examples
+
+```js
+const regex = /[\p{Letter}\p{Decimal_Number}]/u;
+// Match all letters and decimal digits.
+```
+
+```js
+const regexArrows = /^\p{Block=Arrows}+$/u;
+regexArrows.test('←↑→↓↔↕↖↗↘↙↚↛↜↝↞↟↠↡↢↣↤↥↦↧↨↩↪↫↬↭↮↯↰↱↲↳↴↵↶↷↸↹↺↻↼↽↾↿⇀⇁⇂⇃⇄⇅⇆⇇⇈⇉⇊⇋⇌⇍⇎⇏⇐⇑⇒⇓⇔⇕⇖⇗⇘⇙⇚⇛⇜⇝⇞⇟⇠⇡⇢⇣⇤⇥⇦⇧⇨⇩⇪⇫⇬⇭⇮⇯⇰⇱⇲⇳⇴⇵⇶⇷⇸⇹⇺⇻⇼⇽⇾⇿');
+// → true
+```
+
+```js
+// ECMAScript parsers written in ECMAScript won’t need complex regular
+// expressions anymore to match identifiers. Compare with e.g.
+// https://gist.github.com/mathiasbynens/6334847.
+const regexIdentifierStart = /[$_\p{ID_Start}]/u;
+const regexIdentifierPart = /[$_\u200C\u200D\p{ID_Continue}\p{Other_ID_Start}]/u;
+// Note: the following doesn’t account for reserved words in order to
+// keep the example simple.
+const regexIdentifier = /^(?:[$_\p{ID_Start}])(?:[$_\u200C\u200D\p{ID_Continue}\p{Other_ID_Start}])*$/u;
+```
