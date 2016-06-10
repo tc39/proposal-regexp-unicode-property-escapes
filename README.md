@@ -66,6 +66,12 @@ When `UnicodePropertyName` is `General_Category` (or its alias `gc`) or a binary
 
 ### FAQ
 
+#### What about backwards compatibility?
+
+In regular expressions without the `u` flag, the pattern `\p` is an (unnecessary) escape sequence for `p`. Patterns of the form `\p{Letter}` might already be present in existing regular expressions without the `u` flag, and therefore we cannot assign new meaning to such patterns without breaking backwards compatibility.
+
+For this reason, ECMAScript 2015 made unnecessary escape sequences like `\p` and `\P` [throw an exception](https://bugs.ecmascript.org/show_bug.cgi?id=3157) when the `u` flag is set. This enables us to change the meaning of `\p{…}` and `\P{…}` in regular expressions with the `u` flag without breaking backwards compatibility.
+
 #### Why not support loose matching?
 
 [UAX44-LM3](http://unicode.org/reports/tr44/#Matching_Symbolic) specifies the loose matching rules for comparing Unicode property and value aliases.
