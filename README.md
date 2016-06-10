@@ -18,7 +18,7 @@ There currently is no way to access these Unicode character properties natively 
     // → true
     ```
 
-    The downside of this approach is that the XRegExp library is a run-time dependency which may not be ideal for performance-sensitive applications. For usage on the web, there is an additional performance penalty: `xregexp-all-min.js.gz` takes up over 35 KB of space after minifying and applying gzip compression.
+    The downside of this approach is that the XRegExp library is a run-time dependency which may not be ideal for performance-sensitive applications. For usage on the web, there is an additional load-time performance penalty: `xregexp-all-min.js.gz` takes up over 35 KB of space after minifying and applying gzip compression.
 
 2. Use a library such as [Regenerate](https://github.com/mathiasbynens/regenerate) to generate the regular expression at build time:
 
@@ -31,7 +31,7 @@ There currently is no way to access these Unicode character properties natively 
     // Imagine there’s more code here to save this pattern to a file.
     ```
 
-    This approach results in optimal run-time performance, although the generated regular expressions tend to be fairly large in size (which could lead to performance problems on the web). The biggest downside is that it requires a build script, which gets painful as the developer needs more Unicode-aware regular expressions.
+    This approach results in optimal run-time performance, although the generated regular expressions tend to be fairly large in size (which could lead to load-time performance problems on the web). The biggest downside is that it requires a build script, which gets painful as the developer needs more Unicode-aware regular expressions.
 
 ## Proposed solution
 
@@ -54,19 +54,53 @@ This proposal solves all the abovementioned problems:
 
 Unicode property escapes generally look like this:
 
-```
-\p{UnicodePropertyName=UnicodePropertyValue}
-```
+<pre>\p{<b><i>UnicodePropertyName</i></b>=<b><i>UnicodePropertyValue</i></b>}</pre>
 
 The aliases defined in [`PropertyAliases.txt`](http://unicode.org/Public/UNIDATA/PropertyAliases.txt) and [`PropertyValueAliases.txt`](http://unicode.org/Public/UNIDATA/PropertyValueAliases.txt) may be used instead of the canonical property and value names. The use of an unknown property name or value triggers a `SyntaxError`.
 
-When `UnicodePropertyName` is `General_Category` or a binary property, the following shorthand syntax is available:
+When `UnicodePropertyName` is `General_Category` (or its alias `gc`) or a binary property, the following shorthand syntax is available:
 
-```
-\p{LoneUnicodePropertyNameOrValue}
-```
+<pre>\p{<b><i>LoneUnicodePropertyNameOrValue</i></b>}</pre>
 
 `\P{…}` is the negated form of `\p{…}`.
+
+### FAQ
+
+#### Why not support loose matching?
+
+[UAX44-LM3](http://unicode.org/reports/tr44/#Matching_Symbolic) specifies the loose matching rules for comparing Unicode property and value aliases.
+
+> Ignore case, whitespace, underscores, hyphens, […]
+
+Loose matching makes `\p{lB=Ba}` equivalent to `\p{Line_Break=Break_After}` or `/\p{___lower C-A-S-E___}/u` equivalent to `/\p{Lowercase}/u`. We assert that this feature does not add any value, and in fact harms code readability and maintainability.
+
+Should the need arise, then support for loose matching can always be added later, as part of a separate ECMAScript proposal. If we add it now, however, there is no going back.
+
+#### Why not support the `is` prefix?
+
+[UAX44-LM3](http://unicode.org/reports/tr44/#Matching_Symbolic) specifies the loose matching rules for comparing Unicode property and value aliases, one of which is:
+
+> Ignore […] any initial prefix string `is`.
+
+This rule makes `Script=IsGreek` and `IsScript=Greek` equivalent to `Script=Greek`. We assert that this feature does not add any value, and in fact harms code readability. It introduces ambiguity and increases implementation complexity, since some property values or aliases already start with `is`, e.g. `Decomposition_Type=Isolated` and `Line_Break=IS` which is an alias for `Line_Break=Infix_Numeric`.
+
+Compatibility with Unicode property escapes in other languages is not an argument either, since [no existing regular expression engine](http://unicode.org/mail-arch/unicode-ml/y2016-m06/0012.html) seems to implement the `is` prefix exactly as described in UAX44-LM3, and those that partially implement it wildly differ in behavior.
+
+Strictness is preferred over ambiguity.
+
+Should the need arise, then support for the `is` prefix can always be added later, as part of a separate ECMAScript proposal. If we add it now, however, there is no going back.
+
+#### Why not support e.g. `\pL` as a shorthand for `\p{L}`?
+
+This shorthand doesn’t add any value and as such the added implementation complexity (small as it may be) isn’t worth it. `\p{L}` works; there’s no reason to introduce another syntax for it other than compatibility with other languages which is an utopian goal anyhow.
+
+Should the need arise, then support for this shorthand can always be added later, as part of a separate ECMAScript proposal. If we add it now, however, there is no going back.
+
+#### Why not support `:` as a separator in addition to `=`?
+
+Supporting multiple separators doesn’t add any value and as such the added implementation complexity (small as it may be) isn’t worth it. `\p{Block=Arrows}` works; there’s no reason to introduce another syntax for it other than compatibility with other languages which is an utopian goal anyhow.
+
+Should the need arise, then support for the `:` separator can always be added later, as part of a separate ECMAScript proposal. If we add it now, however, there is no going back.
 
 ## Illustrative examples
 
