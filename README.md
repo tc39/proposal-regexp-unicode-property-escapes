@@ -18,7 +18,7 @@ There currently is no way to access these Unicode character properties natively 
     // → true
     ```
 
-    The downside of this approach is that the XRegExp library is a run-time dependency which may not be ideal for performance-sensitive applications. For usage on the web, there is an additional load-time performance penalty: `xregexp-all-min.js.gz` takes up over 35 KB of space after minifying and applying gzip compression.
+    The downside of this approach is that the XRegExp library is a run-time dependency which may not be ideal for performance-sensitive applications. For usage on the web, there is an additional load-time performance penalty: `xregexp-all-min.js.gz` takes up over 35 KB of space after minifying and applying gzip compression. Whenever the Unicode Standard is updated, a new version of XRegExp must be published and end users need to update their XRegExp copy in order to use the latest available data.
 
 2. Use a library such as [Regenerate](https://github.com/mathiasbynens/regenerate) to generate the regular expression at build time:
 
@@ -31,7 +31,7 @@ There currently is no way to access these Unicode character properties natively 
     // Imagine there’s more code here to save this pattern to a file.
     ```
 
-    This approach results in optimal run-time performance, although the generated regular expressions tend to be fairly large in size (which could lead to load-time performance problems on the web). The biggest downside is that it requires a build script, which gets painful as the developer needs more Unicode-aware regular expressions.
+    This approach results in optimal run-time performance, although the generated regular expressions tend to be fairly large in size (which could lead to load-time performance problems on the web). The biggest downside is that it requires a build script, which gets painful as the developer needs more Unicode-aware regular expressions. Whenever the Unicode Standard is updated, the build script must be updated and its results must be deployed in order to use the latest available data.
 
 ## Proposed solution
 
@@ -49,6 +49,7 @@ This proposal solves all the abovementioned problems:
 * There is no dependency on run-time libraries.
 * The regular expressions patterns are compact and readable — no more file size bloat.
 * Creating a script that generates the regular expression at build time is no longer necessary.
+* Code that uses Unicode property escapes stays up-to-date “automatically” from the developer’s point of view: whenever the Unicode Standard gets an update, the ECMAScript engine updates its data.
 
 ## High-level API
 
