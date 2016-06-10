@@ -114,7 +114,7 @@ Should the need arise, then support for the `:` separator can always be added la
 
 ### Unicode-aware version of `\d`
 
-To support any numeric symbol in Unicode rather than just ASCII `[0-9]`, use `\p{Number}` instead of `\d`.
+To match any numeric symbol in Unicode rather than just ASCII `[0-9]`, use `\p{Number}` instead of `\d`.
 
 ```js
 const regex = /^\p{Number}+$/u;
@@ -124,7 +124,7 @@ regex.test('²³¹¼½¾𝟏𝟐𝟑𝟜𝟝𝟞𝟩𝟪𝟫𝟬𝟭𝟮𝟯𝟺
 
 ### Unicode-aware version of `\D`
 
-To support any non-numeric symbol in Unicode rather than just `[^0-9]`, use `\P{Number}` instead of `\D`.
+To match any non-numeric symbol in Unicode rather than just `[^0-9]`, use `\P{Number}` instead of `\D`.
 
 ```js
 const regex = /^\P{Number}+$/u;
@@ -134,7 +134,7 @@ regex.test('Իմ օդաթիռը լի է օձաձկերով');
 
 ### Unicode-aware version of `\w`
 
-To support any word symbol in Unicode rather than just ASCII `[a-zA-Z0-9_]`, use `[\p{Letter}\p{Number}\p{Connector_Punctuation}\p{Mark}]`.
+To match any word symbol in Unicode rather than just ASCII `[a-zA-Z0-9_]`, use `[\p{Letter}\p{Number}\p{Connector_Punctuation}\p{Mark}]`.
 
 ```js
 const regex = /([\p{Letter}\p{Number}\p{Connector_Punctuation}\p{Mark}]+)/gu;
@@ -196,6 +196,10 @@ Matched word with length 3: đầy
 Matched word with length 4: lươn
 ```
 
+### Unicode-aware version of `\w`
+
+To match any non-word symbol in Unicode rather than just `[^a-zA-Z0-9_]`, use `[^\p{Letter}\p{Number}\p{Connector_Punctuation}\p{Mark}]`.
+
 ### Other examples
 
 ```js
@@ -219,3 +223,8 @@ const regexIdentifierPart = /[$_\u200C\u200D\p{ID_Continue}\p{Other_ID_Start}]/u
 // keep the example simple.
 const regexIdentifier = /^(?:[$_\p{ID_Start}])(?:[$_\u200C\u200D\p{ID_Continue}\p{Other_ID_Start}])*$/u;
 ```
+
+## Specification
+
+* [Ecmarkup source](https://github.com/mathiasbynens/es-regex-unicode-property-escapes/blob/master/spec.html)
+* [HTML version](https://mathiasbynens.github.io/es-regex-unicode-property-escapes/)
