@@ -64,6 +64,8 @@ When `UnicodePropertyName` is `General_Category` (or its alias `gc`) or a binary
 
 `\P{…}` is the negated form of `\p{…}`.
 
+Implementations must support the following Unicode properties and their property aliases as required by [UTS18 RL1.2](http://unicode.org/reports/tr18/#RL1.2): `General_Category`, `Script`, `Script_Extensions`, `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, and `Assigned`. Implementations may extend Unicode property support to the remaining enumeration or binary properties.
+
 ### FAQ
 
 #### What about backwards compatibility?
