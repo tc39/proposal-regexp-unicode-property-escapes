@@ -50,6 +50,24 @@ This proposal solves all the abovementioned problems:
 * The regular expressions patterns are compact and readable — no more file size bloat.
 * Creating a script that generates the regular expression at build time is no longer necessary.
 
+## High-level API
+
+Unicode property escapes generally look like this:
+
+```
+\p{UnicodePropertyName=UnicodePropertyValue}
+```
+
+The aliases defined in [`PropertyAliases.txt`](http://unicode.org/Public/UNIDATA/PropertyAliases.txt) and [`PropertyValueAliases.txt`](http://unicode.org/Public/UNIDATA/PropertyValueAliases.txt) may be used instead of the canonical property and value names. The use of an unknown property name or value triggers a `SyntaxError`.
+
+When `UnicodePropertyName` is `General_Category` or a binary property, the following shorthand syntax is available:
+
+```
+\p{LoneUnicodePropertyNameOrValue}
+```
+
+`\P{…}` is the negated form of `\p{…}`.
+
 ## Illustrative examples
 
 ### Unicode-aware version of `\d`
@@ -59,6 +77,16 @@ To support any numeric symbol in Unicode rather than just ASCII `[0-9]`, use `\p
 ```js
 const regex = /^\p{Number}+$/u;
 regex.test('²³¹¼½¾𝟏𝟐𝟑𝟜𝟝𝟞𝟩𝟪𝟫𝟬𝟭𝟮𝟯𝟺𝟻𝟼㉛㉜㉝');
+// → true
+```
+
+### Unicode-aware version of `\D`
+
+To support any non-numeric symbol in Unicode rather than just `[^0-9]`, use `\P{Number}` instead of `\D`.
+
+```js
+const regex = /^\P{Number}+$/u;
+regex.test('Իմ օդաթիռը լի է օձաձկերով');
 // → true
 ```
 
