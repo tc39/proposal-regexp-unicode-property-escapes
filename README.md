@@ -53,15 +53,17 @@ This proposal solves all the abovementioned problems:
 
 ## High-level API
 
-Unicode property escapes generally look like this:
+Unicode property escapes for non-binary Unicode properties look like this:
 
 <pre>\p{<b><i>UnicodePropertyName</i></b>=<b><i>UnicodePropertyValue</i></b>}</pre>
 
 The aliases defined in [`PropertyAliases.txt`](http://unicode.org/Public/UNIDATA/PropertyAliases.txt) and [`PropertyValueAliases.txt`](http://unicode.org/Public/UNIDATA/PropertyValueAliases.txt) may be used instead of the canonical property and value names. The use of an unknown property name or value triggers a `SyntaxError`.
 
-When `UnicodePropertyName` is `General_Category` (or its alias `gc`) or a binary property, the following shorthand syntax is available:
+For binary properties, the following syntax is available:
 
 <pre>\p{<b><i>LoneUnicodePropertyNameOrValue</i></b>}</pre>
+
+This syntax may also be used as a shorthand for `General_Category` values, e.g. `\p{Letter}` instead of `\p{General_Category=Letter}`.
 
 `\P{…}` is the negated form of `\p{…}`.
 

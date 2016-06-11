@@ -125,10 +125,12 @@ contributors: Mathias Bynens
 
 <p><ins class="block">The following is appended to the list of productions in <a href="https://tc39.github.io/ecma262/#sec-characterclassescape">21.2.2.12 CharacterClassEscape</a>.</ins></p>
 
-<p>The production <emu-grammar>CharacterClassEscape :: `\P{` UnicodePropertyValueExpression `}`</emu-grammar> evaluates by returning the set of all characters not included in the set returned by <emu-grammar>UnicodePropertyValueExpression</emu-grammar>.</p>
+<p>The production <emu-grammar>CharacterClassEscape :: `\P{` UnicodePropertyValueExpression `}`</emu-grammar> evaluates by returning the set of all characters not included in the set returned by <emu-nt>UnicodePropertyValueExpression</emu-nt>.</p>
 <p>The production <emu-grammar>UnicodePropertyValueExpression :: UnicodePropertyName `=` UnicodePropertyValue</emu-grammar> evaluates as follows:</p>
 <emu-alg>
   1. Let _p_ be ? UnicodeMatchProperty(_UnicodePropertyName_).
+  1. If _p_ is the name of a binary property in Unicode, then
+    1. Throw a *SyntaxError* exception.
   1. Let _v_ be ? UnicodeMatchPropertyValue(_p_, _UnicodePropertyValue_).
   1. Return the set of all characters with the value _v_ for Unicode property _p_.
 </emu-alg>
