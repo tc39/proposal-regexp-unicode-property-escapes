@@ -239,3 +239,11 @@ const regexIdentifier = /^(?:[$_\p{ID_Start}])(?:[$_\u200C\u200D\p{ID_Continue}\
 
 * [Ecmarkup source](https://github.com/mathiasbynens/es-regexp-unicode-property-escapes/blob/master/spec.html)
 * [HTML version](https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/)
+
+## Implementations
+
+* [V8](https://bugs.chromium.org/p/v8/issues/detail?id=4743) with the `--harmony_regexp_property` flag set
+* [regexpu (transpiler)](https://github.com/mathiasbynens/regexpu) with the `{ unicodePropertyEscape: true }` option enabled
+    * [online demo](https://mothereff.in/regexpu#input=/%5Cp%7BLetter%7D/u&unicodePropertyEscape=1)
+    * [exhaustive list of supported properties](https://github.com/mathiasbynens/regexpu-core/blob/master/property-escapes.md)
+    * [Babel plugin](https://github.com/mathiasbynens/babel-plugin-transform-unicode-property-regex)
