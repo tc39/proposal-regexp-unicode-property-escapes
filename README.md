@@ -113,6 +113,10 @@ Supporting multiple separators doesn’t add any value and as such the added imp
 
 Should the need arise, then support for the `:` separator can always be added later, as part of a separate ECMAScript proposal. If we add it now, however, there is no going back.
 
+#### Why not support e.g. `\p{ScriptName}` as a shorthand for `\p{Script=ScriptName}`?
+
+In the majority of use cases, `Script_Extensions` should be used over `Script`. [UTS24](http://unicode.org/reports/tr24/#Multiple_Script_Values) explains this nicely with practical examples. As such, it would make more sense to add a shorthand for `Script_Extensions` than for `Script`. Doing either would cause confusion, however, since the sets of values for these two properties are identical. For example, it wouldn’t be clear if `\p{Old_Persian}` refers to the `Script` or `Script_Extensions` with that name.
+
 ## Illustrative examples
 
 ### Unicode-aware version of `\d`
