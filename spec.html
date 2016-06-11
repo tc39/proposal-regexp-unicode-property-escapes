@@ -10,28 +10,31 @@ contributors: Mathias Bynens
 </pre>
 <script src="ecmarkup.js" defer></script>
 <link rel="stylesheet" href="ecmarkup.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<style>
+  hr {
+    height: 0.25em;
+    background: #ccc;
+    border: 0;
+    margin: 2em 0;
+  }
+  /* What follows is an ugly workaround for
+     https://github.com/rbuckton/grammarkdown/issues/20. */
+  ins.block {
+    font-weight: bold;
+    font-style: italic;
+  }
+  #prod-CharacterClassEscape > emu-rhs:nth-child(9),
+  #prod-CharacterClassEscape > emu-rhs:nth-child(10),
+  #prod-UnicodePropertyValueExpression {
+    background-color: #e0f8e0;
+    text-decoration: none;
+    /*border-bottom: 1px solid #396;*/
+  }
+</style>
 
 <p><ins class="block">The syntax listed in <a href="https://tc39.github.io/ecma262/#sec-patterns">21.2.1 Patterns</a> is modified as follows:</ins></p>
 
 <emu-grammar>
-  LeadSurrogate ::
-    Hex4Digits [> but only if the SV of |Hex4Digits| is in the inclusive range 0xD800 to 0xDBFF]
-
-  TrailSurrogate ::
-    Hex4Digits [> but only if the SV of |Hex4Digits| is in the inclusive range 0xDC00 to 0xDFFF]
-
-  NonSurrogate ::
-    Hex4Digits [> but only if the SV of |Hex4Digits| is not in the inclusive range 0xD800 to 0xDFFF]
-
-  IdentityEscape[U] ::
-    [+U] SyntaxCharacter
-    [+U] `/`
-    [~U] SourceCharacter but not UnicodeIDContinue
-
-  DecimalEscape ::
-    NonZeroDigit DecimalDigits? [lookahead &lt;! DecimalDigit]
-
   CharacterClassEscape[U] ::
     `d`
     `D`
@@ -45,38 +48,6 @@ contributors: Mathias Bynens
   <ins class="block">UnicodePropertyValueExpression ::
     UnicodePropertyName `=` UnicodePropertyValue
     LoneUnicodePropertyNameOrValue</ins>
-
-  CharacterClass[U] ::
-    `[` [lookahead &lt;! {`^`}] ClassRanges[?U] `]`
-    `[` `^` ClassRanges[?U] `]`
-
-  ClassRanges[U] ::
-    [empty]
-    NonemptyClassRanges[?U]
-
-  NonemptyClassRanges[U] ::
-    ClassAtom[?U]
-    ClassAtom[?U] NonemptyClassRangesNoDash[?U]
-    ClassAtom[?U] `-` ClassAtom[?U] ClassRanges[?U]
-
-  NonemptyClassRangesNoDash[U] ::
-    ClassAtom[?U]
-    ClassAtomNoDash[?U] NonemptyClassRangesNoDash[?U]
-    ClassAtomNoDash[?U] `-` ClassAtom[?U] ClassRanges[?U]
-
-  ClassAtom[U] ::
-    `-`
-    ClassAtomNoDash[?U]
-
-  ClassAtomNoDash[U] ::
-    SourceCharacter but not one of `\` or `]` or `-`
-    `\` ClassEscape[?U]
-
-  ClassEscape[U] ::
-    `b`
-    [+U] `-`
-    CharacterClassEscape
-    CharacterEscape[?U]
 </emu-grammar>
 
 <hr>
