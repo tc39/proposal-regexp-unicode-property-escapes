@@ -233,5 +233,5 @@ const regexIdentifier = /^(?:[$_\p{ID_Start}])(?:[$_\u200C\u200D\p{ID_Continue}\
 
 ## Specification
 
-* [Ecmarkup source](https://github.com/mathiasbynens/es-regex-unicode-property-escapes/blob/master/spec.html)
-* [HTML version](https://mathiasbynens.github.io/es-regex-unicode-property-escapes/)
+* [Ecmarkup source](https://github.com/mathiasbynens/es-regexp-unicode-property-escapes/blob/master/spec.html)
+* [HTML version](https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/)
