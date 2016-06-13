@@ -32,7 +32,7 @@ contributors: Mathias Bynens
   }
 </style>
 
-<p><ins class="block">The syntax listed in <a href="https://tc39.github.io/ecma262/#sec-patterns">21.2.1 Patterns</a> is modified as follows:</ins></p>
+<p><ins class="block">The syntax listed in <a href="https://tc39.github.io/ecma262/#sec-patterns">21.2.1 Patterns</a> is modified as follows.</ins></p>
 
 <emu-grammar>
   CharacterClassEscape[U] ::
@@ -63,9 +63,7 @@ contributors: Mathias Bynens
       1. Return _property_.
     1. Else, throw a *SyntaxError* exception.
   </emu-alg>
-  <emu-note>
-    <p>Implementations must support the following Unicode properties and their property aliases as required by <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: `General_Category`, `Script`, `Script_Extensions`, `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, and `Assigned`. Implementations may extend Unicode property support to the remaining enumeration or binary properties.</p>
-  </emu-note>
+  <p>Implementations must support the following Unicode properties and their property aliases as required by <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: `General_Category`, `Script`, `Script_Extensions`, `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, and `Assigned`. Implementations may extend Unicode property support to the remaining enumeration or binary properties.</p>
   <emu-note>
     <p>Only the canonical property names and property aliases listed in `PropertyAliases.txt` as well as the property names `Any`, `ASCII`, and `Assigned` must be recognized. For example, `Block` and `blk` are valid, but `block` or `Blk` aren’t.</p>
   </emu-note>
@@ -81,14 +79,12 @@ contributors: Mathias Bynens
       1. Return _value_.
     1. Else, throw a *SyntaxError* exception.
   </emu-alg>
-  <emu-note>
-    <p>This algorithm differs from <a href="http://unicode.org/reports/tr44/#Matching_Symbolic">the matching rules for symbolic values listed in UAX44</a>: case, <emu-xref href="#sec-white-space">white space</emu-xref>, U+002D (HYPHEN-MINUS), and U+005F (LOW LINE) are not ignored, and the `Is` prefix is not supported.</p>
-  </emu-note>
+  <p>Implementations must support any existing property values and their aliases for the following Unicode properties as required by <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: `General_Category`, `Script`, and `Script_Extensions`. Implementations that extend Unicode property support to remaining enumeration properties must support any existing values (including aliases) for those properties.</p>
   <emu-note>
     <p>Only the canonical property values and property value aliases listed in `PropertyValueAliases.txt` must be recognized. For example, `Super_And_Sub` and `Superscripts_And_Subscripts` are valid `Block` values, but `super_and_sub` and `Superscripts and Subscripts` aren’t.</p>
   </emu-note>
   <emu-note>
-    <p>Implementations must support any existing property values and their aliases for the following Unicode properties as required by <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: `General_Category`, `Script`, and `Script_Extensions`. Implementations that extend Unicode property support to remaining enumeration properties must support any existing values (including aliases) for those properties.</p>
+    <p>This algorithm differs from <a href="http://unicode.org/reports/tr44/#Matching_Symbolic">the matching rules for symbolic values listed in UAX44</a>: case, <emu-xref href="#sec-white-space">white space</emu-xref>, U+002D (HYPHEN-MINUS), and U+005F (LOW LINE) are not ignored, and the `Is` prefix is not supported.</p>
   </emu-note>
 </emu-clause>
 
