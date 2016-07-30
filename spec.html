@@ -25,6 +25,13 @@ contributors: Mathias Bynens
   }
   #prod-CharacterClassEscape > emu-rhs:nth-child(9),
   #prod-CharacterClassEscape > emu-rhs:nth-child(10),
+  #prod-UnicodePropertyNameCharacter,
+  #prod-UnicodePropertyNameCharacters,
+  #prod-UnicodePropertyName,
+  #prod-UnicodePropertyValueCharacter,
+  #prod-UnicodePropertyValueCharacters,
+  #prod-UnicodePropertyValue,
+  #prod-LoneUnicodePropertyNameOrValue,
   #prod-UnicodePropertyValueExpression {
     background-color: #e0f8e0;
     text-decoration: none;
@@ -35,6 +42,10 @@ contributors: Mathias Bynens
 <p><ins class="block">The syntax listed in <a href="https://tc39.github.io/ecma262/#sec-patterns">21.2.1 Patterns</a> is modified as follows.</ins></p>
 
 <emu-grammar>
+  ControlLetter :: one of
+    `a` `b` `c` `d` `e` `f` `g` `h` `i` `j` `k` `l` `m` `n` `o` `p` `q` `r` `s` `t` `u` `v` `w` `x` `y` `z`
+    `A` `B` `C` `D` `E` `F` `G` `H` `I` `J` `K` `L` `M` `N` `O` `P` `Q` `R` `S` `T` `U` `V` `W` `X` `Y` `Z`
+
   CharacterClassEscape[U] ::
     `d`
     `D`
@@ -48,6 +59,38 @@ contributors: Mathias Bynens
   <ins class="block">UnicodePropertyValueExpression ::
     UnicodePropertyName `=` UnicodePropertyValue
     LoneUnicodePropertyNameOrValue</ins>
+
+    UnicodePropertyNameCharacter ::
+      ControlLetter
+      `_`
+
+    UnicodePropertyNameCharacters ::
+      UnicodePropertyNameCharacter UnicodePropertyNameCharacters?
+
+    UnicodePropertyName ::
+      UnicodePropertyNameCharacters
+
+    UnicodePropertyValueCharacter ::
+      UnicodePropertyNameCharacter
+      `0`
+      `1`
+      `2`
+      `3`
+      `4`
+      `5`
+      `6`
+      `7`
+      `8`
+      `9`
+
+    UnicodePropertyValueCharacters ::
+      UnicodePropertyValueCharacter UnicodePropertyValueCharacters?
+
+    UnicodePropertyValue ::
+      UnicodePropertyValueCharacters
+
+    LoneUnicodePropertyNameOrValue ::
+      UnicodePropertyValueCharacters
 </emu-grammar>
 
 <hr>
