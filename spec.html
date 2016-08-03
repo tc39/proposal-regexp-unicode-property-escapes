@@ -95,16 +95,50 @@ contributors: Mathias Bynens
 
 <hr>
 
+<p><ins class="block">The following items are appended to <a href="https://tc39.github.io/ecma262/#sec-string-literals-static-semantics-early-errors">11.8.4.1 Static Semantics: Early Errors</a>.</ins></p>
+
+<emu-grammar>UnicodePropertyName :: UnicodePropertyNameCharacters</emu-grammar>
+<ul>
+  <li>
+    It is a Syntax Error if <emu-nt>UnicodePropertyName</emu-nt> does not strictly match a known Unicode property name or property alias.
+  </li>
+</ul>
+
+<emu-grammar>UnicodePropertyValue :: UnicodePropertyValueCharacters</emu-grammar>
+<ul>
+  <li>
+    It is a Syntax Error if <emu-nt>UnicodePropertyValue</emu-nt> does not strictly match a known Unicode property value or property value alias.
+  </li>
+</ul>
+
+<emu-grammar>UnicodePropertyValueExpression :: UnicodePropertyName `=` UnicodePropertyValue</emu-grammar>
+<ul>
+  <li>
+    It is a Syntax Error if <emu-nt>UnicodePropertyName</emu-nt> strictly matches a known Unicode binary property or binary property alias.
+  </li>
+  <li>
+    It is a Syntax Error if <emu-nt>UnicodePropertyValue</emu-nt> is not a known value or value alias for the Unicode property or property alias <emu-nt>UnicodePropertyName</emu-nt>.
+  </li>
+</ul>
+
+<emu-grammar>UnicodePropertyValueExpression :: LoneUnicodePropertyNameOrValue</emu-grammar>
+<ul>
+  <li>
+    It is a Syntax Error if <emu-nt>LoneUnicodePropertyNameOrValue</emu-nt> does not strictly match a known Unicode general category, general category alias, binary property, or binary property alias.
+  </li>
+</ul>
+
+<hr>
+
 <p><ins class="block">The following two abstract operations are appended to <a href="https://tc39.github.io/ecma262/#sec-atom">21.2.2.8 Atom</a>.</ins></p>
 
 <emu-clause id="sec-runtime-semantics-unicodematchproperty-p" aoid="UnicodeMatchProperty">
   <h1>Runtime Semantics: UnicodeMatchProperty ( _p_ )</h1>
   <p>The abstract operation UnicodeMatchProperty takes a string parameter _p_ and performs the following steps:</p>
   <emu-alg>
-    1. If _p_ strictly matches a known Unicode property name or property alias, then
-      1. Let _property_ be that unaliased property name.
-      1. Return _property_.
-    1. Else, throw a *SyntaxError* exception.
+    1. Assert: _p_ strictly matches a known Unicode property name or property alias.
+    1. Let _property_ be that unaliased property name of _p_.
+    1. Return _property_.
   </emu-alg>
   <p>Implementations must support the following Unicode properties and their property aliases as required by <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: `General_Category`, `Script`, `Script_Extensions`, `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, and `Assigned`. Implementations may extend Unicode property support to the remaining enumeration or binary properties.</p>
   <emu-note>
@@ -117,10 +151,9 @@ contributors: Mathias Bynens
   <p>The abstract operation UnicodeMatchPropertyValue takes two string parameters _p_ and _v_ and performs the following steps:</p>
   <emu-alg>
     1. Assert: _p_ is a canonical, unaliased Unicode property name.
-    1. If _v_ strictly matches a known property value or property value alias for Unicode property _p_, then
-      1. Let _value_ be that unaliased property value.
-      1. Return _value_.
-    1. Else, throw a *SyntaxError* exception.
+    1. Assert: _v_ strictly matches a known property value or property value alias for Unicode property _p_.
+    1. Let _value_ be that unaliased property value of _v_.
+    1. Return _value_.
   </emu-alg>
   <p>Implementations must support any existing property values and their aliases for the following Unicode properties as required by <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: `General_Category`, `Script`, and `Script_Extensions`. Implementations that extend Unicode property support to remaining enumeration properties must support any existing values (including aliases) for those properties.</p>
   <emu-note>
@@ -138,17 +171,16 @@ contributors: Mathias Bynens
 <p>The production <emu-grammar>CharacterClassEscape :: `\P{` UnicodePropertyValueExpression `}`</emu-grammar> evaluates by returning the set of all characters not included in the set returned by <emu-nt>UnicodePropertyValueExpression</emu-nt>.</p>
 <p>The production <emu-grammar>UnicodePropertyValueExpression :: UnicodePropertyName `=` UnicodePropertyValue</emu-grammar> evaluates as follows:</p>
 <emu-alg>
-  1. Let _p_ be ? UnicodeMatchProperty(_UnicodePropertyName_).
-  1. If _p_ is the name of a binary property in Unicode, then
-    1. Throw a *SyntaxError* exception.
-  1. Let _v_ be ? UnicodeMatchPropertyValue(_p_, _UnicodePropertyValue_).
+  1. Let _p_ be UnicodeMatchProperty(_UnicodePropertyName_).
+  1. Assert: _p_ is not the name of a binary property in Unicode.
+  1. Let _v_ be UnicodeMatchPropertyValue(_p_, _UnicodePropertyValue_).
   1. Return the set of all characters with the value _v_ for Unicode property _p_.
 </emu-alg>
 <p>The production <emu-grammar>UnicodePropertyValueExpression :: LoneUnicodePropertyNameOrValue</emu-grammar> evaluates as follows:</p>
 <emu-alg>
-  1. If ? UnicodeMatchPropertyValue(`"General_Category"`, _LoneUnicodePropertyNameOrValue_) is the name of a general category in Unicode, then
+  1. If UnicodeMatchPropertyValue(`"General_Category"`, _LoneUnicodePropertyNameOrValue_) is the name of a general category in Unicode, then
     1. Return the set of all characters in Unicode general category _LoneUnicodePropertyNameOrValue_.
-  1. If ? UnicodeMatchProperty(_LoneUnicodePropertyNameOrValue_) is the name of a binary property in Unicode, then
-    1. Return the set of all characters with the value _True_ for Unicode property _LoneUnicodePropertyNameOrValue_.
-  1. Else, throw a *SyntaxError* exception.
+  1. Let _property_ be UnicodeMatchProperty(_LoneUnicodePropertyNameOrValue_).
+  1. Assert: _property_ is the name of a binary property in Unicode.
+  1. Return the set of all characters with the value |True| for Unicode property _property_.
 </emu-alg>
