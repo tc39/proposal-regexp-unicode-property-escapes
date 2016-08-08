@@ -117,6 +117,16 @@ Should the need arise, then support for the `:` separator can always be added la
 
 In the majority of use cases, `Script_Extensions` should be used over `Script`. [UTS24](http://unicode.org/reports/tr24/#Multiple_Script_Values) explains this nicely with practical examples. As such, it would make more sense to add a shorthand for `Script_Extensions` than for `Script`. Doing either would cause confusion, however, since the sets of values for these two properties are identical. For example, it wouldn’t be clear if `\p{Old_Persian}` refers to the `Script` or `Script_Extensions` with that name.
 
+#### Why not overload `\u{…}` instead of adding `\p{…}` and `\P{…}`?
+
+The main argument in favor of overloading `\u{…}` is that it hints that it is Unicode. We assert that this hint is unnecessary, as the required `u` flag on the regular expression already indicates Unicode.
+
+The `p` in `\p{…}` stands for “property”. Combined with the `u` flag, this indicates nicely that the expression within the braces relates to a Unicode property.
+
+Overloading `\u{…}` introduces an ambiguity. Imagine a new binary property or general category named `Beef` is added to the Unicode Standard. Since `Beef` consists of hexadecimal digits only (`[A-Fa-f0-9]`), it’s unclear whether `\u{Beef}` is a code point escape sequence for [U+BEEF HANGUL SYLLABLE BBEGS](https://codepoints.net/U+BEEF) or whether it’s a property escape sequence referring to the property/category named `Beef`.
+
+Existing other languages with support for Unicode property escapes use `\p{…}` and `\P{…}`. Although compatibility with these other implementations is a non-goal (since they’re not compatible amongst themselves to begin with), it makes sense to follow the tradition here and re-use the base syntax that developers are already familiar with.
+
 ## Illustrative examples
 
 ### Unicode-aware version of `\d`
