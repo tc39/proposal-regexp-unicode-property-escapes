@@ -11,31 +11,15 @@ contributors: Mathias Bynens
 <script src="ecmarkup.js" defer></script>
 <link rel="stylesheet" href="ecmarkup.css">
 <style>
+  ins.block {
+    font-weight: bold;
+    font-style: italic;
+  }
   hr {
     height: 0.25em;
     background: #ccc;
     border: 0;
     margin: 2em 0;
-  }
-  /* What follows is an ugly workaround for
-     https://github.com/rbuckton/grammarkdown/issues/20. */
-  ins.block {
-    font-weight: bold;
-    font-style: italic;
-  }
-  #prod-CharacterClassEscape > emu-rhs:nth-child(9),
-  #prod-CharacterClassEscape > emu-rhs:nth-child(10),
-  #prod-UnicodePropertyNameCharacter,
-  #prod-UnicodePropertyNameCharacters,
-  #prod-UnicodePropertyName,
-  #prod-UnicodePropertyValueCharacter,
-  #prod-UnicodePropertyValueCharacters,
-  #prod-UnicodePropertyValue,
-  #prod-LoneUnicodePropertyNameOrValue,
-  #prod-UnicodePropertyValueExpression {
-    background-color: #e0f8e0;
-    text-decoration: none;
-    /*border-bottom: 1px solid #396;*/
   }
 </style>
 
@@ -53,44 +37,44 @@ contributors: Mathias Bynens
     `S`
     `w`
     `W`
-    <ins class="block">[+U] `p{` UnicodePropertyValueExpression `}`</ins>
-    <ins class="block">[+U] `P{` UnicodePropertyValueExpression `}`</ins>
+    <ins>[+U] `p{` UnicodePropertyValueExpression `}`
+    [+U] `P{` UnicodePropertyValueExpression `}`</ins>
 
-  <ins class="block">UnicodePropertyValueExpression ::
+  <ins>UnicodePropertyValueExpression ::
     UnicodePropertyName `=` UnicodePropertyValue
     LoneUnicodePropertyNameOrValue</ins>
 
-    UnicodePropertyNameCharacter ::
-      ControlLetter
-      `_`
+  <ins>UnicodePropertyNameCharacter ::
+    ControlLetter
+    `_`</ins>
 
-    UnicodePropertyNameCharacters ::
-      UnicodePropertyNameCharacter UnicodePropertyNameCharacters?
+  <ins>UnicodePropertyNameCharacters ::
+    UnicodePropertyNameCharacter UnicodePropertyNameCharacters?</ins>
 
-    UnicodePropertyName ::
-      UnicodePropertyNameCharacters
+  <ins>UnicodePropertyName ::
+    UnicodePropertyNameCharacters</ins>
 
-    UnicodePropertyValueCharacter ::
-      UnicodePropertyNameCharacter
-      `0`
-      `1`
-      `2`
-      `3`
-      `4`
-      `5`
-      `6`
-      `7`
-      `8`
-      `9`
+  <ins>UnicodePropertyValueCharacter ::
+    UnicodePropertyNameCharacter
+    `0`
+    `1`
+    `2`
+    `3`
+    `4`
+    `5`
+    `6`
+    `7`
+    `8`
+    `9`</ins>
 
-    UnicodePropertyValueCharacters ::
-      UnicodePropertyValueCharacter UnicodePropertyValueCharacters?
+  <ins>UnicodePropertyValueCharacters ::
+    UnicodePropertyValueCharacter UnicodePropertyValueCharacters?</ins>
 
-    UnicodePropertyValue ::
-      UnicodePropertyValueCharacters
+  <ins>UnicodePropertyValue ::
+    UnicodePropertyValueCharacters</ins>
 
-    LoneUnicodePropertyNameOrValue ::
-      UnicodePropertyValueCharacters
+  <ins>LoneUnicodePropertyNameOrValue ::
+    UnicodePropertyValueCharacters</ins>
 </emu-grammar>
 
 <hr>
