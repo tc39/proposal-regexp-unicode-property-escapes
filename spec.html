@@ -155,16 +155,16 @@ contributors: Mathias Bynens
 <p>The production <emu-grammar>CharacterClassEscape :: `\P{` UnicodePropertyValueExpression `}`</emu-grammar> evaluates by returning the set of all characters not included in the set returned by <emu-nt>UnicodePropertyValueExpression</emu-nt>.</p>
 <p>The production <emu-grammar>UnicodePropertyValueExpression :: UnicodePropertyName `=` UnicodePropertyValue</emu-grammar> evaluates as follows:</p>
 <emu-alg>
-  1. Let _p_ be UnicodeMatchProperty(_UnicodePropertyName_).
+  1. Let _p_ be ! UnicodeMatchProperty(_UnicodePropertyName_).
   1. Assert: _p_ is not the name of a binary property in Unicode.
-  1. Let _v_ be UnicodeMatchPropertyValue(_p_, _UnicodePropertyValue_).
+  1. Let _v_ be ! UnicodeMatchPropertyValue(_p_, _UnicodePropertyValue_).
   1. Return the set of all characters with the value _v_ for Unicode property _p_.
 </emu-alg>
 <p>The production <emu-grammar>UnicodePropertyValueExpression :: LoneUnicodePropertyNameOrValue</emu-grammar> evaluates as follows:</p>
 <emu-alg>
-  1. If UnicodeMatchPropertyValue(`"General_Category"`, _LoneUnicodePropertyNameOrValue_) is the name of a general category in Unicode, then
+  1. If ! UnicodeMatchPropertyValue(`"General_Category"`, _LoneUnicodePropertyNameOrValue_) is the name of a general category in Unicode, then
     1. Return the set of all characters in Unicode general category _LoneUnicodePropertyNameOrValue_.
-  1. Let _property_ be UnicodeMatchProperty(_LoneUnicodePropertyNameOrValue_).
+  1. Let _property_ be ! UnicodeMatchProperty(_LoneUnicodePropertyNameOrValue_).
   1. Assert: _property_ is the name of a binary property in Unicode.
   1. Return the set of all characters with the value |True| for Unicode property _property_.
 </emu-alg>
