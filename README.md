@@ -107,6 +107,10 @@ This shorthand doesn’t add any value and as such the added implementation comp
 
 Should the need arise, then support for this shorthand can always be added later, as part of a separate ECMAScript proposal. If we add it now, however, there is no going back.
 
+#### Why use `=` (and not something else) as a separator?
+
+The `=` in `\p{…=…}` aligns with the `=` in `(?=…)` for positive lookaheads and `(?<=…)` for positive lookbehinds. Also, `=` is what most regular expression engines use as a separator. [See issue #8 for more information.](https://github.com/mathiasbynens/es-regexp-unicode-property-escapes/issues/8)
+
 #### Why not support `:` as a separator in addition to `=`?
 
 Supporting multiple separators doesn’t add any value and as such the added implementation complexity (small as it may be) isn’t worth it. `\p{Block=Arrows}` works; there’s no reason to introduce another syntax for it other than compatibility with other languages which is an utopian goal anyhow.
