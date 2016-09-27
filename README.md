@@ -131,6 +131,12 @@ Overloading `\u{…}` introduces an ambiguity. Imagine a new binary property or 
 
 Existing other languages with support for Unicode property escapes use `\p{…}` and `\P{…}`. Although compatibility with these other implementations is a non-goal (since they’re not compatible amongst themselves to begin with), it makes sense to follow the tradition here and re-use the base syntax that developers are already familiar with.
 
+#### Why not support the `Name` property (`\p{Name=…}`)?
+
+Developers already have a way to refer to a specific symbol without having to use that symbol in their source code: Unicode code point escapes of the form `\u{1D306}`. As such, the need to support `\p{Name=TETRAGRAM FOR CENTRE}` is not strong enough to warrant inclusion in this proposal.
+
+Support for the `Name` property can always be added later, as part of a separate ECMAScript proposal. If we add it now, however, there is no going back.
+
 ## Illustrative examples
 
 ### Unicode-aware version of `\d`
