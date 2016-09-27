@@ -124,7 +124,7 @@ contributors: Mathias Bynens
     1. Let _property_ be that unaliased property name of _p_.
     1. Return _property_.
   </emu-alg>
-  <p>Implementations must support the following Unicode properties and their property aliases as required by <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: `General_Category`, `Script`, `Script_Extensions`, `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, and `Assigned`. Implementations may extend Unicode property support to the remaining enumeration or binary properties.</p>
+  <p>Implementations must support the following Unicode properties and their property aliases as required by <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: `General_Category`, `Script`, `Script_Extensions`, `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, and `Assigned`. To ensure interoperability, implementations must not extend Unicode property support to the remaining enumeration or binary properties.</p>
   <emu-note>
     <p>Only the canonical property names and property aliases listed in `PropertyAliases.txt` as well as the property names `Any`, `ASCII`, and `Assigned` must be recognized. For example, `Block` and `blk` are valid, but `block` or `Blk` aren’t.</p>
   </emu-note>

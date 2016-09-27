@@ -67,7 +67,7 @@ This syntax may also be used as a shorthand for `General_Category` values, e.g. 
 
 `\P{…}` is the negated form of `\p{…}`.
 
-Implementations must support the following Unicode properties and their property aliases as required by [UTS18 RL1.2](http://unicode.org/reports/tr18/#RL1.2): `General_Category`, `Script`, `Script_Extensions`, `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, and `Assigned`. Implementations may extend Unicode property support to the remaining enumeration or binary properties.
+Implementations must support the following Unicode properties and their property aliases as required by [UTS18 RL1.2](http://unicode.org/reports/tr18/#RL1.2): `General_Category`, `Script`, `Script_Extensions`, `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, and `Assigned`. To ensure interoperability, implementations must not extend Unicode property support to any remaining enumeration or binary properties.
 
 ### FAQ
 
