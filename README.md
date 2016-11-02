@@ -67,7 +67,7 @@ This syntax may also be used as a shorthand for `General_Category` values, e.g. 
 
 `\P{…}` is the negated form of `\p{…}`.
 
-Implementations must support the following Unicode properties and their property aliases as required by [UTS18 RL1.2](http://unicode.org/reports/tr18/#RL1.2): `General_Category`, `Script`, `Script_Extensions`, `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, and `Assigned`. To ensure interoperability, implementations must not extend Unicode property support to any remaining enumeration or binary properties.
+Implementations must support the following Unicode properties and their property aliases: `General_Category`, `Script`, `Script_Extensions`, and all the available binary properties (including but not limited to `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, `Assigned`, `ID_Start`, `ID_Continue`, `Other_ID_Start`, `Other_ID_Continue`, `Join_Control`, etc.). This is a superset of what [UTS18 RL1.2](http://unicode.org/reports/tr18/#RL1.2) requires. To ensure interoperability, implementations must not extend Unicode property support to the remaining enumeration properties.
 
 ### FAQ
 
@@ -113,7 +113,7 @@ The `=` in `\p{…=…}` aligns with the `=` in `(?=…)` for positive lookahead
 
 #### Why not support `:` as a separator in addition to `=`?
 
-Supporting multiple separators doesn’t add any value and as such the added implementation complexity (small as it may be) isn’t worth it. `\p{Block=Arrows}` works; there’s no reason to introduce another syntax for it other than compatibility with other languages which is an utopian goal anyhow.
+Supporting multiple separators doesn’t add any value and as such the added implementation complexity (small as it may be) isn’t worth it. `\p{Script_Extensions=Greek}` works; there’s no reason to introduce another syntax for it other than compatibility with other languages which is an utopian goal anyhow.
 
 Should the need arise, then support for the `:` separator can always be added later, as part of a separate ECMAScript proposal. If we add it now, however, there is no going back.
 
@@ -234,14 +234,6 @@ Match any numeric symbol in Unicode, including non-decimal symbols such as Roman
 ```js
 const regex = /^\p{Number}+$/u;
 regex.test('²³¹¼½¾𝟏𝟐𝟑𝟜𝟝𝟞𝟩𝟪𝟫𝟬𝟭𝟮𝟯𝟺𝟻𝟼㉛㉜㉝ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫⅬⅭⅮⅯⅰⅱⅲⅳⅴⅵⅶⅷⅸⅹⅺⅻⅼⅽⅾⅿ');
-// → true
-```
-
-Match any symbol in the `Arrows` block:
-
-```js
-const regexArrows = /^\p{Block=Arrows}+$/u;
-regexArrows.test('←↑→↓↔↕↖↗↘↙↚↛↜↝↞↟↠↡↢↣↤↥↦↧↨↩↪↫↬↭↮↯↰↱↲↳↴↵↶↷↸↹↺↻↼↽↾↿⇀⇁⇂⇃⇄⇅⇆⇇⇈⇉⇊⇋⇌⇍⇎⇏⇐⇑⇒⇓⇔⇕⇖⇗⇘⇙⇚⇛⇜⇝⇞⇟⇠⇡⇢⇣⇤⇥⇦⇧⇨⇩⇪⇫⇬⇭⇮⇯⇰⇱⇲⇳⇴⇵⇶⇷⇸⇹⇺⇻⇼⇽⇾⇿');
 // → true
 ```
 

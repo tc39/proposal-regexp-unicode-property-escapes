@@ -124,9 +124,9 @@ contributors: Mathias Bynens
     1. Let _property_ be that unaliased property name of _p_.
     1. Return _property_.
   </emu-alg>
-  <p>Implementations must support the following Unicode properties and their property aliases as required by <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: `General_Category`, `Script`, `Script_Extensions`, `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, and `Assigned`. To ensure interoperability, implementations must not extend Unicode property support to the remaining enumeration or binary properties.</p>
+  <p>Implementations must support the following Unicode properties and their property aliases: `General_Category`, `Script`, `Script_Extensions`, and all the available binary properties (including but not limited to `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, `Assigned`, `ID_Start`, `ID_Continue`, `Other_ID_Start`, `Other_ID_Continue`, `Join_Control`, etc.). This is a superset of what <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a> requires. To ensure interoperability, implementations must not extend Unicode property support to the remaining enumeration properties.</p>
   <emu-note>
-    <p>Only the canonical property names and property aliases listed in `PropertyAliases.txt` as well as the property names `Any`, `ASCII`, and `Assigned` must be recognized. For example, `Block` and `blk` are valid, but `block` or `Blk` aren’t.</p>
+    <p>Only the canonical property names and property aliases listed in `PropertyAliases.txt` as well as the property names `Any`, `ASCII`, and `Assigned` must be recognized. For example, `Script_Extensions` and `scx` are valid, but `script_extensions` or `Scx` aren’t.</p>
   </emu-note>
 </emu-clause>
 
@@ -141,7 +141,7 @@ contributors: Mathias Bynens
   </emu-alg>
   <p>Implementations must support any existing property values and their aliases for the following Unicode properties as required by <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: `General_Category`, `Script`, and `Script_Extensions`. Implementations that extend Unicode property support to remaining enumeration properties must support any existing values (including aliases) for those properties.</p>
   <emu-note>
-    <p>Only the canonical property values and property value aliases listed in `PropertyValueAliases.txt` must be recognized. For example, `Super_And_Sub` and `Superscripts_And_Subscripts` are valid `Block` values, but `super_and_sub` and `Superscripts and Subscripts` aren’t.</p>
+    <p>Only the canonical property values and property value aliases listed in `PropertyValueAliases.txt` must be recognized. For example, `Xpeo` and `Old_Persian` are valid `Script_Extension` values, but `xpeo` and `Old Persian` aren’t.</p>
   </emu-note>
   <emu-note>
     <p>This algorithm differs from <a href="http://unicode.org/reports/tr44/#Matching_Symbolic">the matching rules for symbolic values listed in UAX44</a>: case, <emu-xref href="#sec-white-space">white space</emu-xref>, U+002D (HYPHEN-MINUS), and U+005F (LOW LINE) are not ignored, and the `Is` prefix is not supported.</p>
