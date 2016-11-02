@@ -242,9 +242,7 @@ Match ECMAScript [`IdentifierStart`](https://tc39.github.io/ecma262/#prod-Identi
 ```js
 const regexIdentifierStart = /[$_\p{ID_Start}]/u;
 const regexIdentifierPart = /[$_\u200C\u200D\p{ID_Continue}\p{Other_ID_Start}]/u;
-// Note: the following doesn’t account for reserved words in order to
-// keep the example simple.
-const regexIdentifier = /^(?:[$_\p{ID_Start}])(?:[$_\u200C\u200D\p{ID_Continue}\p{Other_ID_Start}])*$/u;
+const regexIdentifierName = /^(?:[$_\p{ID_Start}])(?:[$_\u200C\u200D\p{ID_Continue}\p{Other_ID_Start}])*$/u;
 ```
 
 ## Specification
