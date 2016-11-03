@@ -116,8 +116,8 @@ contributors: Mathias Bynens
 
 <p><ins class="block">The following two abstract operations are appended to <a href="https://tc39.github.io/ecma262/#sec-atom">21.2.2.8 Atom</a>.</ins></p>
 
-<emu-clause id="sec-runtime-semantics-unicodematchproperty-p" aoid="UnicodeMatchProperty">
-  <h1>Runtime Semantics: UnicodeMatchProperty ( _p_ )</h1>
+<emu-clause id="sec-static-semantics-unicodematchproperty-p" aoid="UnicodeMatchProperty">
+  <h1>Static Semantics: UnicodeMatchProperty ( _p_ )</h1>
   <p>The abstract operation UnicodeMatchProperty takes a string parameter _p_ and performs the following steps:</p>
   <emu-alg>
     1. Assert: _p_ strictly matches a known Unicode property name or property alias.
@@ -130,8 +130,8 @@ contributors: Mathias Bynens
   </emu-note>
 </emu-clause>
 
-<emu-clause id="sec-runtime-semantics-unicodematchpropertyvalue-p-v" aoid="UnicodeMatchPropertyValue">
-  <h1>Runtime Semantics: UnicodeMatchPropertyValue ( _p_, _v_ )</h1>
+<emu-clause id="sec-static-semantics-unicodematchpropertyvalue-p-v" aoid="UnicodeMatchPropertyValue">
+  <h1>Static Semantics: UnicodeMatchPropertyValue ( _p_, _v_ )</h1>
   <p>The abstract operation UnicodeMatchPropertyValue takes two string parameters _p_ and _v_ and performs the following steps:</p>
   <emu-alg>
     1. Assert: _p_ is a canonical, unaliased Unicode property name.
