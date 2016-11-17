@@ -1,7 +1,7 @@
 language: node_js
 after_success:
-  - $(npm bin)/set-up-ssh --key "${encrypted_1f569fc91d50_key}"
-      --iv "${encrypted_1f569fc91d50_iv}"
+  - $(npm bin)/set-up-ssh --key "${encrypted_7d5e65f18d78_key}"
+      --iv "${encrypted_7d5e65f18d78_iv}"
       --path-encrypted-key .travis-github-deploy-key.enc
   - $(npm bin)/update-branch --commands 'npm run build'
       --commit-message "Update gh-pages @ ${TRAVIS_COMMIT}"

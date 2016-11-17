@@ -109,7 +109,7 @@ Should the need arise, then support for this shorthand can always be added later
 
 #### Why use `=` (and not something else) as a separator?
 
-The `=` in `\p{…=…}` aligns with the `=` in `(?=…)` for positive lookaheads and `(?<=…)` for positive lookbehinds. Also, `=` is what most regular expression engines use as a separator. [See issue #8 for more information.](https://github.com/mathiasbynens/es-regexp-unicode-property-escapes/issues/8)
+The `=` in `\p{…=…}` aligns with the `=` in `(?=…)` for positive lookaheads and `(?<=…)` for positive lookbehinds. Also, `=` is what most regular expression engines use as a separator. [See issue #8 for more information.](https://github.com/tc39/regexp-unicode-property-escapes/issues/8)
 
 #### Why not support `:` as a separator in addition to `=`?
 
@@ -247,8 +247,8 @@ const regexIdentifierName = /^(?:[$_\p{ID_Start}])(?:[$_\u200C\u200D\p{ID_Contin
 
 ## Specification
 
-* [Ecmarkup source](https://github.com/mathiasbynens/es-regexp-unicode-property-escapes/blob/master/spec.html)
-* [HTML version](https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/)
+* [Ecmarkup source](https://github.com/tc39/proposal-regexp-unicode-property-escapes/blob/master/spec.html)
+* [HTML version](https://tc39.github.io/proposal-regexp-unicode-property-escapes/)
 
 ## Implementations
 
