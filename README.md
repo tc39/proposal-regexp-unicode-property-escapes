@@ -67,7 +67,7 @@ This syntax may also be used as a shorthand for `General_Category` values, e.g. 
 
 `\P{…}` is the negated form of `\p{…}`.
 
-Implementations must support the following Unicode properties and their property aliases: `General_Category`, `Script`, `Script_Extensions`, and all the available binary properties (including but not limited to `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, `Assigned`, `ID_Start`, `ID_Continue`, `Other_ID_Start`, `Other_ID_Continue`, `Join_Control`, etc.). This is a superset of what [UTS18 RL1.2](http://unicode.org/reports/tr18/#RL1.2) requires. To ensure interoperability, implementations must not extend Unicode property support to the remaining enumeration properties.
+Implementations must support the following Unicode properties and their property aliases: `General_Category`, `Script`, `Script_Extensions`, and all the available binary properties (including but not limited to `Alphabetic`, `Uppercase`, `Lowercase`, `White_Space`, `Noncharacter_Code_Point`, `Default_Ignorable_Code_Point`, `Any`, `ASCII`, `Assigned`, `ID_Start`, `ID_Continue`, `Other_ID_Start`, `Other_ID_Continue`, `Join_Control`, `Emoji_Presentation`, `Emoji_Modifier`, `Emoji_Modifier_Base`, etc.). This is a superset of what [UTS18 RL1.2](http://unicode.org/reports/tr18/#RL1.2) requires. To ensure interoperability, implementations must not extend Unicode property support to the remaining enumeration properties.
 
 ### FAQ
 
@@ -226,6 +226,49 @@ Matched word with length 4: lươn
 ### Unicode-aware version of `\W`
 
 To match any non-word symbol in Unicode rather than just `[^a-zA-Z0-9_]`, use `[^\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]`.
+
+### Matching emoji
+
+To match emoji symbols, the binary properties from [UTR51](http://unicode.org/reports/tr51/) come in handy.
+
+```js
+const regex = /\p{Emoji_Modifier_Base}\p{Emoji_Modifier}?|\p{Emoji_Presentation}|\p{Emoji}\uFE0F/gu;
+```
+
+This regular expression matches, from left to right:
+
+1. emoji with optional modifiers (`\p{Emoji_Modifier_Base}\p{Emoji_Modifier}?`);
+2. any remaining symbols that render as emoji rather than text by default (`\p{Emoji_Presentation}`);
+3. symbols that render as text by default, but are forced to render as emoji using U+FE0F VARIATION SELECTOR-16 (`\p{Emoji}\uFE0F`).
+
+```js
+const regex = /\p{Emoji_Modifier_Base}\p{Emoji_Modifier}?|\p{Emoji_Presentation}|\p{Emoji}\uFE0F/gu;
+const text = `
+\u{231A}: ⌚ default emoji presentation character (Emoji_Presentation)
+\u{2194}\u{FE0F}: ↔️ default text presentation character rendered as emoji
+\u{1F469}: 👩 emoji modifier base (Emoji_Modifier_Base)
+\u{1F469}\u{1F3FF}: 👩🏿 emoji modifier base followed by a modifier
+`;
+
+let match;
+while (match = regex.exec(text)) {
+  const emoji = match[0];
+  console.log(`Matched sequence ${ emoji } — code points: ${ [...emoji].length }`);
+}
+```
+
+Console output:
+
+```
+Matched sequence ⌚ — code points: 1
+Matched sequence ⌚ — code points: 1
+Matched sequence ↔️ — code points: 2
+Matched sequence ↔️ — code points: 2
+Matched sequence 👩 — code points: 1
+Matched sequence 👩 — code points: 1
+Matched sequence 👩🏿 — code points: 2
+Matched sequence 👩🏿 — code points: 2
+```
 
 ### Other examples
 
