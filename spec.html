@@ -152,6 +152,7 @@ contributors: Mathias Bynens
 
 <p><ins class="block">The following is appended to the list of productions in <a href="https://tc39.github.io/ecma262/#sec-characterclassescape">21.2.2.12 CharacterClassEscape</a>.</ins></p>
 
+<p>The production <emu-grammar>CharacterClassEscape :: `\p{` UnicodePropertyValueExpression `}`</emu-grammar> evaluates by returning the CharSet containing all Unicode code points included in the CharSet returned by <emu-nt>UnicodePropertyValueExpression</emu-nt>.</p>
 <p>The production <emu-grammar>CharacterClassEscape :: `\P{` UnicodePropertyValueExpression `}`</emu-grammar> evaluates by returning the CharSet containing all Unicode code points not included in the CharSet returned by <emu-nt>UnicodePropertyValueExpression</emu-nt>.</p>
 <p>The production <emu-grammar>UnicodePropertyValueExpression :: UnicodePropertyName `=` UnicodePropertyValue</emu-grammar> evaluates as follows:</p>
 <emu-alg>
