@@ -109,7 +109,7 @@ Should the need arise, then support for this shorthand can always be added later
 
 #### Why use `=` (and not something else) as a separator?
 
-The `=` in `\p{…=…}` aligns with the `=` in `(?=…)` for positive lookaheads and `(?<=…)` for positive lookbehinds. Also, `=` is what most regular expression engines use as a separator. [See issue #8 for more information.](https://github.com/tc39/regexp-unicode-property-escapes/issues/8)
+The `=` in `\p{…=…}` aligns with the `=` in `(?=…)` for positive lookaheads and `(?<=…)` for positive lookbehinds. Also, `=` is what most regular expression engines use as a separator. [See issue #8 for more information.](https://github.com/tc39/proposal-regexp-unicode-property-escapes/issues/8)
 
 #### Why not support `:` as a separator in addition to `=`?
 
