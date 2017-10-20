@@ -167,7 +167,7 @@ To match any word symbol in Unicode rather than just ASCII `[a-zA-Z0-9_]`, use `
 const regex = /([\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]+)/gu;
 const text = `
 Amharic: የኔ ማንዣበቢያ መኪና በዓሣዎች ተሞልቷል
-Bengali: আমার হভারক্রাফ্ট কুঁচে মাছ-এ ভরা হয়ে গেছে
+Bengali: আমার হভারক্রাফ্ট কুঁচে মাছ-এ ভরা হয়ে গেছে
 Georgian: ჩემი ხომალდი საჰაერო ბალიშზე სავსეა გველთევზებით
 Macedonian: Моето летачко возило е полно со јагули
 Vietnamese: Tàu cánh ngầm của tôi đầy lươn
@@ -196,7 +196,7 @@ Matched word with length 5: কুঁচে
 Matched word with length 3: মাছ
 Matched word with length 1: এ
 Matched word with length 3: ভরা
-Matched word with length 3: হয়ে
+Matched word with length 3: হয়ে
 Matched word with length 4: গেছে
 Matched word with length 8: Georgian
 Matched word with length 4: ჩემი
@@ -296,7 +296,7 @@ const regexIdentifierName = /^(?:[$_\p{ID_Start}])(?:[$_\u200C\u200D\p{ID_Contin
 ## Implementations
 
 * [V8](https://bugs.chromium.org/p/v8/issues/detail?id=4743) with the `--harmony_regexp_property` flag set
-* [Safari/JavaScriptCore]((https://developer.apple.com/safari/technology-preview/release-notes/) beginning in Safari Technology Preview 42
+* [Safari/JavaScriptCore](https://developer.apple.com/safari/technology-preview/release-notes/) beginning in Safari Technology Preview 42
 * [regexpu (transpiler)](https://github.com/mathiasbynens/regexpu) with the `{ unicodePropertyEscape: true }` option enabled
     * [online demo](https://mothereff.in/regexpu#input=/%5Cp%7BLetter%7D/u&unicodePropertyEscape=1)
     * [exhaustive list of supported properties](https://github.com/mathiasbynens/regexpu-core/blob/master/property-escapes.md)
