@@ -295,7 +295,7 @@ const regexIdentifierName = /^(?:[$_\p{ID_Start}])(?:[$_\u200C\u200D\p{ID_Contin
 
 ## Implementations
 
-* [V8](https://bugs.chromium.org/p/v8/issues/detail?id=4743) with the `--harmony_regexp_property` flag set
+* [V8](https://bugs.chromium.org/p/v8/issues/detail?id=4743), shipping in Chrome 64
 * [Safari/JavaScriptCore](https://developer.apple.com/safari/technology-preview/release-notes/) beginning in Safari Technology Preview 42
 * [regexpu (transpiler)](https://github.com/mathiasbynens/regexpu) with the `{ unicodePropertyEscape: true }` option enabled
     * [online demo](https://mothereff.in/regexpu#input=/%5Cp%7BLetter%7D/u&unicodePropertyEscape=1)
