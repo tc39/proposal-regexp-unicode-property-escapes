@@ -30,12 +30,6 @@ contributors: Mathias Bynens
     padding-left: 0;
     list-style: none;
   }
-  .unicode-property-table tbody {
-    display: none;
-  }
-  .unicode-property-table.show tbody {
-    display: table-row-group;
-  }
 </style>
 
 <p><ins class="block">The syntax listed in <a href="https://tc39.github.io/ecma262/#sec-patterns">21.2.1 Patterns</a> is modified as follows.</ins></p>
@@ -227,14 +221,3 @@ contributors: Mathias Bynens
     </li>
   </ol>
 </emu-annex>
-<script>
-  const figCaptions = document.querySelectorAll('figcaption');
-  for (const caption of figCaptions) {
-    caption.addEventListener('click', (event) => {
-      const table = event.target
-        .parentElement
-        .querySelector('.unicode-property-table');
-      table.classList.toggle('show');
-    });
-  }
-</script>
