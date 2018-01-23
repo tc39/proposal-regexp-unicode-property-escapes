@@ -109,7 +109,7 @@ contributors: Mathias Bynens
 <emu-grammar>UnicodePropertyValueExpression :: UnicodePropertyName `=` UnicodePropertyValue</emu-grammar>
 <ul>
   <li>
-    It is a Syntax Error if the List of Unicode code points that is SourceText of <emu-nt>UnicodePropertyName</emu-nt> is identical to a List of Unicode code points that is a Unicode binary property or binary property alias listed in the “Property name and aliases” column of <emu-xref href="#table-binary-unicode-properties"></emu-xref>.
+    It is a Syntax Error if the List of Unicode code points that is SourceText of <emu-nt>UnicodePropertyName</emu-nt> is not identical to a List of Unicode code points that is a Unicode property name or property alias listed in the “Property name and aliases” column of <emu-xref href="#table-nonbinary-unicode-properties"></emu-xref>.
   </li>
   <li>
     It is a Syntax Error if the List of Unicode code points that is SourceText of <emu-nt>UnicodePropertyValue</emu-nt> is not identical to a List of Unicode code points that is a value or value alias for the Unicode property or property alias given by SourceText of <emu-nt>UnicodePropertyName</emu-nt> listed in the “Property value and aliases” column of the corresponding tables <emu-xref href="#table-unicode-general-category-values"></emu-xref> or <emu-xref href="#table-unicode-script-values"></emu-xref>.
