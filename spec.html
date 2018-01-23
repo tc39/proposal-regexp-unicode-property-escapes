@@ -99,13 +99,6 @@ contributors: Mathias Bynens
 
 <p><ins class="block">The following items are appended to <a href="https://tc39.github.io/ecma262/#sec-patterns-static-semantics-early-errors">21.2.1.1 Static Semantics: Early Errors</a>.</ins></p>
 
-<emu-grammar>UnicodePropertyName :: UnicodePropertyNameCharacters</emu-grammar>
-<ul>
-  <li>
-    It is a Syntax Error if the List of Unicode code points that is SourceText of <emu-nt>UnicodePropertyName</emu-nt> is not identical to a List of Unicode code points that is a Unicode property name or property alias listed in the “Property name and aliases” column of <emu-xref href="#table-nonbinary-unicode-properties"></emu-xref> or <emu-xref href="#table-binary-unicode-properties"></emu-xref>.
-  </li>
-</ul>
-
 <emu-grammar>UnicodePropertyValueExpression :: UnicodePropertyName `=` UnicodePropertyValue</emu-grammar>
 <ul>
   <li>
