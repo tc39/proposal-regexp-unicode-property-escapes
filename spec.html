@@ -130,8 +130,8 @@ contributors: Mathias Bynens
   <p>The abstract operation UnicodeMatchProperty takes a parameter _p_ that is a List of Unicode code points and performs the following steps:</p>
   <emu-alg>
     1. Assert: _p_ is a List of Unicode code points that is identical to a List of Unicode code points that is a Unicode property name or property alias listed in the “Property name and aliases” column of <emu-xref href="#table-nonbinary-unicode-properties"></emu-xref> or <emu-xref href="#table-binary-unicode-properties"></emu-xref>.
-    1. Let _property_ be the canonical property name of _p_ as given in the “Canonical property name” column of the corresponding row.
-    1. Return the List of Unicode code points of _property_.
+    1. Let _p_ be the canonical property name of _p_ as given in the “Canonical property name” column of the corresponding row.
+    1. Return the List of Unicode code points of _p_.
   </emu-alg>
   <p>To ensure interoperability, implementations must not extend Unicode property support to the remaining properties.</p>
   <p>Implementations must only recognize the property aliases listed in <emu-xref href="#table-nonbinary-unicode-properties"></emu-xref> and <emu-xref href="#table-binary-unicode-properties"></emu-xref>.</p>
@@ -182,8 +182,8 @@ contributors: Mathias Bynens
 <emu-alg>
   1. If ! UnicodeMatchPropertyValue(`"General_Category"`, _LoneUnicodePropertyNameOrValue_) is identical to a List of Unicode code points that is the name of a Unicode general category or general category alias listed in the “Property value and aliases” column of <emu-xref href="#table-unicode-general-category-values"></emu-xref>, then
     1. Return the CharSet containing all Unicode code points whose character database definition includes the property `General_Category` with value _LoneUnicodePropertyNameOrValue_.
-  1. Let _property_ be ! UnicodeMatchProperty(_LoneUnicodePropertyNameOrValue_).
-  1. Assert: _property_ is a binary Unicode property or binary property alias listed in the “Property name and aliases” column of <emu-xref href="#table-binary-unicode-properties"></emu-xref>.
+  1. Let _p_ be ! UnicodeMatchProperty(_LoneUnicodePropertyNameOrValue_).
+  1. Assert: _p_ is a binary Unicode property or binary property alias listed in the “Property name and aliases” column of <emu-xref href="#table-binary-unicode-properties"></emu-xref>.
   1. Return the CharSet containing all Unicode code points whose character database definition includes the property _p_ with value |True|.
 </emu-alg>
 
