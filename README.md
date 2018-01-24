@@ -2,7 +2,7 @@
 
 ## Status
 
-This proposal is in stage 3 of [the TC39 process](https://tc39.github.io/process-document/).
+This proposal is at stage 4 of [the TC39 process](https://tc39.github.io/process-document/) and is scheduled to be included in ES2018.
 
 ## Motivation
 
