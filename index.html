@@ -1,0 +1,2302 @@
+<!doctype html>
+<head><meta charset="utf-8">
+<title>Unicode property escapes in regular expressions</title><script type="application/json" id="menu-search-biblio">[{"type":"production","id":"prod-ControlLetter","name":"ControlLetter","referencingIds":["_ref_28"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"ControlLetter"},{"type":"production","id":"prod-CharacterClassEscape","name":"CharacterClassEscape","referencingIds":[],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"CharacterClassEscape"},{"type":"production","id":"prod-UnicodePropertyValueExpression","name":"UnicodePropertyValueExpression","referencingIds":["_ref_23","_ref_24","_ref_48","_ref_49","_ref_50","_ref_51"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyValueExpression"},{"type":"production","id":"prod-UnicodePropertyNameCharacter","name":"UnicodePropertyNameCharacter","referencingIds":["_ref_29","_ref_32","_ref_37"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyNameCharacter"},{"type":"production","id":"prod-UnicodePropertyNameCharacters","name":"UnicodePropertyNameCharacters","referencingIds":["_ref_30","_ref_31","_ref_38"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyNameCharacters"},{"type":"production","id":"prod-UnicodePropertyName","name":"UnicodePropertyName","referencingIds":["_ref_25","_ref_41","_ref_43","_ref_45","_ref_52"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyName"},{"type":"production","id":"prod-UnicodePropertyValueCharacter","name":"UnicodePropertyValueCharacter","referencingIds":["_ref_33","_ref_39"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyValueCharacter"},{"type":"production","id":"prod-UnicodePropertyValueCharacters","name":"UnicodePropertyValueCharacters","referencingIds":["_ref_34","_ref_35","_ref_36","_ref_40"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyValueCharacters"},{"type":"production","id":"prod-UnicodePropertyValue","name":"UnicodePropertyValue","referencingIds":["_ref_26","_ref_42","_ref_44","_ref_53"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyValue"},{"type":"production","id":"prod-LoneUnicodePropertyNameOrValue","name":"LoneUnicodePropertyNameOrValue","referencingIds":["_ref_27","_ref_46","_ref_47","_ref_54"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"LoneUnicodePropertyNameOrValue"},{"type":"clause","id":"sec-static-semantics-sourcetext","aoid":null,"title":"Static Semantics: SourceText","titleHTML":"Static Semantics: SourceText","number":"1","namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","referencingIds":[],"key":"Static Semantics: SourceText"},{"type":"table","id":"table-nonbinary-unicode-properties","number":1,"caption":"Table 1: Non-binary Unicode property aliases and their canonical property names","referencingIds":["_ref_0","_ref_5","_ref_7","_ref_11","_ref_16"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"Table 1: Non-binary Unicode property aliases and their canonical property names"},{"type":"table","id":"table-binary-unicode-properties","number":2,"caption":"Table 2: Binary Unicode property aliases and their canonical property names","referencingIds":["_ref_4","_ref_6","_ref_8","_ref_18"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"Table 2: Binary Unicode property aliases and their canonical property names"},{"type":"op","aoid":"UnicodeMatchProperty","refId":"sec-runtime-semantics-unicodematchproperty-p","location":"","referencingIds":[],"key":"UnicodeMatchProperty"},{"type":"clause","id":"sec-runtime-semantics-unicodematchproperty-p","aoid":"UnicodeMatchProperty","title":"Runtime Semantics: UnicodeMatchProperty ( p )","titleHTML":"Runtime Semantics: UnicodeMatchProperty ( <var>p</var> )","number":"2","namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","referencingIds":["_ref_19","_ref_22"],"key":"Runtime Semantics: UnicodeMatchProperty ( p )"},{"type":"table","id":"table-unicode-general-category-values","number":3,"caption":"Table 3: Value aliases and canonical values for the Unicode property <a href=\"https://unicode.org/reports/tr18/#General_Category_Property\">`General_Category`</a>","referencingIds":["_ref_1","_ref_3","_ref_9","_ref_12","_ref_14","_ref_17"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"Table 3: Value aliases and canonical values for the Unicode property <a href=\"https://unicode.org/reports/tr18/#General_Category_Property\">`General_Category`</a>"},{"type":"table","id":"table-unicode-script-values","number":4,"caption":"Table 4: Value aliases and canonical values for the Unicode properties <a href=\"https://unicode.org/reports/tr24/#Script\">`Script`</a> and <a href=\"https://unicode.org/reports/tr24/#Script_Extensions\">`Script_Extensions`</a>","referencingIds":["_ref_2","_ref_10","_ref_13","_ref_15"],"namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","key":"Table 4: Value aliases and canonical values for the Unicode properties <a href=\"https://unicode.org/reports/tr24/#Script\">`Script`</a> and <a href=\"https://unicode.org/reports/tr24/#Script_Extensions\">`Script_Extensions`</a>"},{"type":"op","aoid":"UnicodeMatchPropertyValue","refId":"sec-runtime-semantics-unicodematchpropertyvalue-p-v","location":"","referencingIds":[],"key":"UnicodeMatchPropertyValue"},{"type":"clause","id":"sec-runtime-semantics-unicodematchpropertyvalue-p-v","aoid":"UnicodeMatchPropertyValue","title":"Runtime Semantics: UnicodeMatchPropertyValue ( p, v )","titleHTML":"Runtime Semantics: UnicodeMatchPropertyValue ( <var>p</var>, <var>v</var> )","number":"3","namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","referencingIds":["_ref_20","_ref_21"],"key":"Runtime Semantics: UnicodeMatchPropertyValue ( p, v )"},{"type":"clause","id":"sec-bibliography","aoid":null,"title":"Bibliography","titleHTML":"Bibliography","number":"A","namespace":"https://tc39.github.io/proposal-regexp-unicode-property-escapes/","location":"","referencingIds":[],"key":"Bibliography"}]</script></head><body><div id="menu-toggle">☰</div><div id="menu-spacer"></div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-pins"><div class="menu-pane-header">Pins</div><ul id="menu-pins-list"></ul></div><div class="menu-pane-header">Table of Contents</div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-static-semantics-sourcetext" title="Static Semantics: SourceText"><span class="secnum">1</span> SS: SourceText</a></li><li><span class="item-toggle-none"></span><a href="#sec-runtime-semantics-unicodematchproperty-p" title="Runtime Semantics: UnicodeMatchProperty ( p )"><span class="secnum">2</span> RS: UnicodeMatchProperty ( <var>p</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-runtime-semantics-unicodematchpropertyvalue-p-v" title="Runtime Semantics: UnicodeMatchPropertyValue ( p, v )"><span class="secnum">3</span> RS: UnicodeMatchPropertyValue ( <var>p</var>, <var>v</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-bibliography" title="Bibliography"><span class="secnum">A</span> Bibliography</a></li></ol></div></div><div id="spec-container"><h1 class="version first">Stage 4 Draft / January 24, 2018</h1><h1 class="title">Unicode property escapes in regular expressions</h1>
+<script src="ecmarkup.js" defer=""></script>
+<link rel="stylesheet" href="ecmarkup.css">
+<style>
+  ins.block {
+    font-weight: bold;
+    font-style: italic;
+  }
+  hr {
+    height: 0.25em;
+    background: #ccc;
+    border: 0;
+    margin: 2em 0;
+  }
+  .unicode-property-table {
+    table-layout: fixed;
+    width: 100%;
+    font-size: 80%;
+  }
+  .unicode-property-table ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+</style>
+
+<p><ins class="block">The syntax listed in  <a href="https://tc39.github.io/ecma262/#sec-patterns">21.2.1 Patterns</a> is modified as follows.</ins></p>
+
+<emu-grammar><emu-production name="ControlLetter" type="lexical" oneof="" id="prod-ControlLetter">
+    <emu-nt><a href="#prod-ControlLetter">ControlLetter</a></emu-nt><emu-geq>::</emu-geq><emu-oneof>one of</emu-oneof><emu-rhs><emu-t>a</emu-t><emu-t>b</emu-t><emu-t>c</emu-t><emu-t>d</emu-t><emu-t>e</emu-t><emu-t>f</emu-t><emu-t>g</emu-t><emu-t>h</emu-t><emu-t>i</emu-t><emu-t>j</emu-t><emu-t>k</emu-t><emu-t>l</emu-t><emu-t>m</emu-t><emu-t>n</emu-t><emu-t>o</emu-t><emu-t>p</emu-t><emu-t>q</emu-t><emu-t>r</emu-t><emu-t>s</emu-t><emu-t>t</emu-t><emu-t>u</emu-t><emu-t>v</emu-t><emu-t>w</emu-t><emu-t>x</emu-t><emu-t>y</emu-t><emu-t>z</emu-t><emu-t>A</emu-t><emu-t>B</emu-t><emu-t>C</emu-t><emu-t>D</emu-t><emu-t>E</emu-t><emu-t>F</emu-t><emu-t>G</emu-t><emu-t>H</emu-t><emu-t>I</emu-t><emu-t>J</emu-t><emu-t>K</emu-t><emu-t>L</emu-t><emu-t>M</emu-t><emu-t>N</emu-t><emu-t>O</emu-t><emu-t>P</emu-t><emu-t>Q</emu-t><emu-t>R</emu-t><emu-t>S</emu-t><emu-t>T</emu-t><emu-t>U</emu-t><emu-t>V</emu-t><emu-t>W</emu-t><emu-t>X</emu-t><emu-t>Y</emu-t><emu-t>Z</emu-t></emu-rhs>
+</emu-production>
+<emu-production name="CharacterClassEscape" params="U" type="lexical" id="prod-CharacterClassEscape">
+    <emu-nt params="U"><a href="#prod-CharacterClassEscape">CharacterClassEscape</a><emu-mods><emu-params>[U]</emu-params></emu-mods></emu-nt><emu-geq>::</emu-geq><emu-rhs a="f0f32729"><emu-t>d</emu-t></emu-rhs>
+    <emu-rhs a="919b1483"><emu-t>D</emu-t></emu-rhs>
+    <emu-rhs a="5b9c6c6e"><emu-t>s</emu-t></emu-rhs>
+    <emu-rhs a="6952cf48"><emu-t>S</emu-t></emu-rhs>
+    <emu-rhs a="2d8b484a"><emu-t>w</emu-t></emu-rhs>
+    <emu-rhs a="ae15e851"><emu-t>W</emu-t></emu-rhs><ins>
+    <emu-rhs a="dd28fec2" constraints="+U"><emu-constraints>[+U]</emu-constraints><emu-t>p{</emu-t><emu-nt id="_ref_23"><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-t>}</emu-t></emu-rhs>
+    <emu-rhs a="af7c9730" constraints="+U"><emu-constraints>[+U]</emu-constraints><emu-t>P{</emu-t><emu-nt id="_ref_24"><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-t>}</emu-t></emu-rhs>
+</ins></emu-production>
+<ins><emu-production name="UnicodePropertyValueExpression" type="lexical" id="prod-UnicodePropertyValueExpression">
+    <emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="b11de407"><emu-nt id="_ref_25"><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt><emu-t>=</emu-t><emu-nt id="_ref_26"><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt></emu-rhs>
+    <emu-rhs a="25d94190"><emu-nt id="_ref_27"><a href="#prod-LoneUnicodePropertyNameOrValue">LoneUnicodePropertyNameOrValue</a></emu-nt></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyNameCharacter" type="lexical" id="prod-UnicodePropertyNameCharacter">
+    <emu-nt><a href="#prod-UnicodePropertyNameCharacter">UnicodePropertyNameCharacter</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="69611eb2"><emu-nt id="_ref_28"><a href="#prod-ControlLetter">ControlLetter</a></emu-nt></emu-rhs>
+    <emu-rhs a="07564b94"><emu-t>_</emu-t></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyNameCharacters" type="lexical" id="prod-UnicodePropertyNameCharacters">
+    <emu-nt><a href="#prod-UnicodePropertyNameCharacters">UnicodePropertyNameCharacters</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="c1247f44"><emu-nt id="_ref_29"><a href="#prod-UnicodePropertyNameCharacter">UnicodePropertyNameCharacter</a></emu-nt><emu-nt optional="" id="_ref_30"><a href="#prod-UnicodePropertyNameCharacters">UnicodePropertyNameCharacters</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyName" type="lexical" id="prod-UnicodePropertyName">
+    <emu-nt><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="c0c2619f"><emu-nt id="_ref_31"><a href="#prod-UnicodePropertyNameCharacters">UnicodePropertyNameCharacters</a></emu-nt></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyValueCharacter" type="lexical" id="prod-UnicodePropertyValueCharacter">
+    <emu-nt><a href="#prod-UnicodePropertyValueCharacter">UnicodePropertyValueCharacter</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="531254cc"><emu-nt id="_ref_32"><a href="#prod-UnicodePropertyNameCharacter">UnicodePropertyNameCharacter</a></emu-nt></emu-rhs>
+    <emu-rhs a="5259a431"><emu-t>0</emu-t></emu-rhs>
+    <emu-rhs a="292aa5dd"><emu-t>1</emu-t></emu-rhs>
+    <emu-rhs a="5ca73105"><emu-t>2</emu-t></emu-rhs>
+    <emu-rhs a="ec6bb6b2"><emu-t>3</emu-t></emu-rhs>
+    <emu-rhs a="58ec4a73"><emu-t>4</emu-t></emu-rhs>
+    <emu-rhs a="8fcdef77"><emu-t>5</emu-t></emu-rhs>
+    <emu-rhs a="0b64877d"><emu-t>6</emu-t></emu-rhs>
+    <emu-rhs a="ea5e07a4"><emu-t>7</emu-t></emu-rhs>
+    <emu-rhs a="7a5bd8c3"><emu-t>8</emu-t></emu-rhs>
+    <emu-rhs a="163f4308"><emu-t>9</emu-t></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyValueCharacters" type="lexical" id="prod-UnicodePropertyValueCharacters">
+    <emu-nt><a href="#prod-UnicodePropertyValueCharacters">UnicodePropertyValueCharacters</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="5a208aa0"><emu-nt id="_ref_33"><a href="#prod-UnicodePropertyValueCharacter">UnicodePropertyValueCharacter</a></emu-nt><emu-nt optional="" id="_ref_34"><a href="#prod-UnicodePropertyValueCharacters">UnicodePropertyValueCharacters</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyValue" type="lexical" id="prod-UnicodePropertyValue">
+    <emu-nt><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="526a9170"><emu-nt id="_ref_35"><a href="#prod-UnicodePropertyValueCharacters">UnicodePropertyValueCharacters</a></emu-nt></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="LoneUnicodePropertyNameOrValue" type="lexical" id="prod-LoneUnicodePropertyNameOrValue">
+    <emu-nt><a href="#prod-LoneUnicodePropertyNameOrValue">LoneUnicodePropertyNameOrValue</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="526a9170"><emu-nt id="_ref_36"><a href="#prod-UnicodePropertyValueCharacters">UnicodePropertyValueCharacters</a></emu-nt></emu-rhs>
+</emu-production></ins></emu-grammar>
+
+<emu-clause id="sec-static-semantics-sourcetext">
+  <h1><span class="secnum">1</span>Static Semantics: SourceText</h1>
+  <emu-grammar><emu-production name="UnicodePropertyNameCharacters" type="lexical" collapsed="">
+    <emu-nt><a href="#prod-UnicodePropertyNameCharacters">UnicodePropertyNameCharacters</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="c1247f44"><emu-nt id="_ref_37"><a href="#prod-UnicodePropertyNameCharacter">UnicodePropertyNameCharacter</a></emu-nt><emu-nt optional="" id="_ref_38"><a href="#prod-UnicodePropertyNameCharacters">UnicodePropertyNameCharacters</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt></emu-rhs>
+</emu-production></emu-grammar>
+  <emu-grammar><emu-production name="UnicodePropertyValueCharacters" type="lexical" collapsed="">
+    <emu-nt><a href="#prod-UnicodePropertyValueCharacters">UnicodePropertyValueCharacters</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="5a208aa0"><emu-nt id="_ref_39"><a href="#prod-UnicodePropertyValueCharacter">UnicodePropertyValueCharacter</a></emu-nt><emu-nt optional="" id="_ref_40"><a href="#prod-UnicodePropertyValueCharacters">UnicodePropertyValueCharacters</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt></emu-rhs>
+</emu-production></emu-grammar>
+  <emu-alg><ol><li>Return the <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref>, in source text order, of Unicode code points in the source text matched by this production.
+  </li></ol></emu-alg>
+</emu-clause>
+
+<hr>
+
+<p><ins class="block">The following items are appended to  <a href="https://tc39.github.io/ecma262/#sec-patterns-static-semantics-early-errors">21.2.1.1 Static Semantics: Early Errors</a>.</ins></p>
+
+<emu-grammar><emu-production name="UnicodePropertyValueExpression" type="lexical" collapsed="">
+    <emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="b11de407"><emu-nt id="_ref_41"><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt><emu-t>=</emu-t><emu-nt id="_ref_42"><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt></emu-rhs>
+</emu-production></emu-grammar>
+<ul>
+  <li>
+    It is a Syntax Error if the <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is SourceText of  <emu-nt id="_ref_43"><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt> is not identical to a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is a Unicode property name or property alias listed in the “Property name and aliases” column of  <emu-xref href="#table-nonbinary-unicode-properties" id="_ref_0"><a href="#table-nonbinary-unicode-properties">Table 1</a></emu-xref>.
+  
+  </li>
+  <li>
+    It is a Syntax Error if the <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is SourceText of  <emu-nt id="_ref_44"><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt> is not identical to a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is a value or value alias for the Unicode property or property alias given by SourceText of  <emu-nt id="_ref_45"><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt> listed in the “Property value and aliases” column of the corresponding tables  <emu-xref href="#table-unicode-general-category-values" id="_ref_1"><a href="#table-unicode-general-category-values">Table 3</a></emu-xref> or  <emu-xref href="#table-unicode-script-values" id="_ref_2"><a href="#table-unicode-script-values">Table 4</a></emu-xref>.
+  
+  </li>
+</ul>
+
+<emu-grammar><emu-production name="UnicodePropertyValueExpression" type="lexical" collapsed="">
+    <emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="25d94190"><emu-nt id="_ref_46"><a href="#prod-LoneUnicodePropertyNameOrValue">LoneUnicodePropertyNameOrValue</a></emu-nt></emu-rhs>
+</emu-production></emu-grammar>
+<ul>
+  <li>
+    It is a Syntax Error if the <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is SourceText of  <emu-nt id="_ref_47"><a href="#prod-LoneUnicodePropertyNameOrValue">LoneUnicodePropertyNameOrValue</a></emu-nt> is not identical to a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is a Unicode general category or general category alias listed in the “Property value and aliases” column of  <emu-xref href="#table-unicode-general-category-values" id="_ref_3"><a href="#table-unicode-general-category-values">Table 3</a></emu-xref>, nor a binary property or binary property alias listed in the “Property name and aliases” column of  <emu-xref href="#table-binary-unicode-properties" id="_ref_4"><a href="#table-binary-unicode-properties">Table 2</a></emu-xref>.
+  
+  </li>
+</ul>
+
+<hr>
+
+<p><ins class="block">The following two abstract operations are appended to  <a href="https://tc39.github.io/ecma262/#sec-atom">21.2.2.8 Atom</a>.</ins></p>
+
+<emu-clause id="sec-runtime-semantics-unicodematchproperty-p" aoid="UnicodeMatchProperty">
+  <h1><span class="secnum">2</span>Runtime Semantics: UnicodeMatchProperty ( <var>p</var> )</h1>
+  <p>The algorithm uses values from the following tables, which associate supported Unicode property names and property aliases and their canonical property names.</p>
+  <p>Implementations must support the following non-binary Unicode properties and their property aliases:</p>
+  <emu-import href="table-nonbinary-unicode-properties.html"><emu-table id="table-nonbinary-unicode-properties"><figure><figcaption>Table 1: Non-binary Unicode property aliases and their canonical property names</figcaption>
+	
+	<table class="real-table unicode-property-table">
+		<thead>
+			<tr>
+				<th>Property name and aliases</th>
+				<th>Canonical property name</th>
+			</tr>
+		</thead>
+		<tbody><tr>
+			<td>
+				<ul>
+					<li><code>General_Category</code></li>
+					<li><code>gc</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr18/#General_Category_Property"><code>General_Category</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Script</code></li>
+					<li><code>sc</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr24/#Script"><code>Script</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Script_Extensions</code></li>
+					<li><code>scx</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr24/#Script_Extensions"><code>Script_Extensions</code></a></td>
+		</tr>
+	</tbody></table>
+</figure></emu-table>
+</emu-import>
+  <p>Additionally, implementations must support the following binary Unicode properties and their property aliases:</p>
+  <emu-import href="table-binary-unicode-properties.html"><emu-table id="table-binary-unicode-properties"><figure><figcaption>Table 2: Binary Unicode property aliases and their canonical property names</figcaption>
+	
+	<table class="real-table unicode-property-table">
+		<thead>
+			<tr>
+				<th>Property name and aliases</th>
+				<th>Canonical property name</th>
+			</tr>
+		</thead>
+		<tbody><tr>
+			<td><code>ASCII</code></td>
+			<td><a href="https://unicode.org/reports/tr18/#General_Category_Property"><code>ASCII</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>ASCII_Hex_Digit</code></li>
+					<li><code>AHex</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#ASCII_Hex_Digit"><code>ASCII_Hex_Digit</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Alphabetic</code></li>
+					<li><code>Alpha</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Alphabetic"><code>Alphabetic</code></a></td>
+		</tr>
+		<tr>
+			<td><code>Any</code></td>
+			<td><a href="https://unicode.org/reports/tr18/#General_Category_Property"><code>Any</code></a></td>
+		</tr>
+		<tr>
+			<td><code>Assigned</code></td>
+			<td><a href="https://unicode.org/reports/tr18/#General_Category_Property"><code>Assigned</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Bidi_Control</code></li>
+					<li><code>Bidi_C</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Bidi_Control"><code>Bidi_Control</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Bidi_Mirrored</code></li>
+					<li><code>Bidi_M</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Bidi_Mirrored"><code>Bidi_Mirrored</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Case_Ignorable</code></li>
+					<li><code>CI</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Case_Ignorable"><code>Case_Ignorable</code></a></td>
+		</tr>
+		<tr>
+			<td><code>Cased</code></td>
+			<td><a href="https://unicode.org/reports/tr44/#Cased"><code>Cased</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Changes_When_Casefolded</code></li>
+					<li><code>CWCF</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#CWCF"><code>Changes_When_Casefolded</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Changes_When_Casemapped</code></li>
+					<li><code>CWCM</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#CWCM"><code>Changes_When_Casemapped</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Changes_When_Lowercased</code></li>
+					<li><code>CWL</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#CWL"><code>Changes_When_Lowercased</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Changes_When_NFKC_Casefolded</code></li>
+					<li><code>CWKCF</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#CWKCF"><code>Changes_When_NFKC_Casefolded</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Changes_When_Titlecased</code></li>
+					<li><code>CWT</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#CWT"><code>Changes_When_Titlecased</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Changes_When_Uppercased</code></li>
+					<li><code>CWU</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#CWU"><code>Changes_When_Uppercased</code></a></td>
+		</tr>
+		<tr>
+			<td><code>Dash</code></td>
+			<td><a href="https://unicode.org/reports/tr44/#Dash"><code>Dash</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Default_Ignorable_Code_Point</code></li>
+					<li><code>DI</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Default_Ignorable_Code_Point"><code>Default_Ignorable_Code_Point</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Deprecated</code></li>
+					<li><code>Dep</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Deprecated"><code>Deprecated</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Diacritic</code></li>
+					<li><code>Dia</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Diacritic"><code>Diacritic</code></a></td>
+		</tr>
+		<tr>
+			<td><code>Emoji</code></td>
+			<td><a href="https://unicode.org/reports/tr51/#Emoji_Properties"><code>Emoji</code></a></td>
+		</tr>
+		<tr>
+			<td><code>Emoji_Component</code></td>
+			<td><a href="https://unicode.org/reports/tr51/#Emoji_Properties"><code>Emoji_Component</code></a></td>
+		</tr>
+		<tr>
+			<td><code>Emoji_Modifier</code></td>
+			<td><a href="https://unicode.org/reports/tr51/#Emoji_Properties"><code>Emoji_Modifier</code></a></td>
+		</tr>
+		<tr>
+			<td><code>Emoji_Modifier_Base</code></td>
+			<td><a href="https://unicode.org/reports/tr51/#Emoji_Properties"><code>Emoji_Modifier_Base</code></a></td>
+		</tr>
+		<tr>
+			<td><code>Emoji_Presentation</code></td>
+			<td><a href="https://unicode.org/reports/tr51/#Emoji_Properties"><code>Emoji_Presentation</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Extender</code></li>
+					<li><code>Ext</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Extender"><code>Extender</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Grapheme_Base</code></li>
+					<li><code>Gr_Base</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Grapheme_Base"><code>Grapheme_Base</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Grapheme_Extend</code></li>
+					<li><code>Gr_Ext</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Grapheme_Extend"><code>Grapheme_Extend</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Hex_Digit</code></li>
+					<li><code>Hex</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Hex_Digit"><code>Hex_Digit</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>IDS_Binary_Operator</code></li>
+					<li><code>IDSB</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#IDS_Binary_Operator"><code>IDS_Binary_Operator</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>IDS_Trinary_Operator</code></li>
+					<li><code>IDST</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#IDS_Trinary_Operator"><code>IDS_Trinary_Operator</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>ID_Continue</code></li>
+					<li><code>IDC</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#ID_Continue"><code>ID_Continue</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>ID_Start</code></li>
+					<li><code>IDS</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#ID_Start"><code>ID_Start</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Ideographic</code></li>
+					<li><code>Ideo</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Ideographic"><code>Ideographic</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Join_Control</code></li>
+					<li><code>Join_C</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Join_Control"><code>Join_Control</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Logical_Order_Exception</code></li>
+					<li><code>LOE</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Logical_Order_Exception"><code>Logical_Order_Exception</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Lowercase</code></li>
+					<li><code>Lower</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Lowercase"><code>Lowercase</code></a></td>
+		</tr>
+		<tr>
+			<td><code>Math</code></td>
+			<td><a href="https://unicode.org/reports/tr44/#Math"><code>Math</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Noncharacter_Code_Point</code></li>
+					<li><code>NChar</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Noncharacter_Code_Point"><code>Noncharacter_Code_Point</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Pattern_Syntax</code></li>
+					<li><code>Pat_Syn</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Pattern_Syntax"><code>Pattern_Syntax</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Pattern_White_Space</code></li>
+					<li><code>Pat_WS</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Pattern_White_Space"><code>Pattern_White_Space</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Quotation_Mark</code></li>
+					<li><code>QMark</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Quotation_Mark"><code>Quotation_Mark</code></a></td>
+		</tr>
+		<tr>
+			<td><code>Radical</code></td>
+			<td><a href="https://unicode.org/reports/tr44/#Radical"><code>Radical</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Regional_Indicator</code></li>
+					<li><code>RI</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Regional_Indicator"><code>Regional_Indicator</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Sentence_Terminal</code></li>
+					<li><code>STerm</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#STerm"><code>Sentence_Terminal</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Soft_Dotted</code></li>
+					<li><code>SD</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Soft_Dotted"><code>Soft_Dotted</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Terminal_Punctuation</code></li>
+					<li><code>Term</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Terminal_Punctuation"><code>Terminal_Punctuation</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Unified_Ideograph</code></li>
+					<li><code>UIdeo</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Unified_Ideograph"><code>Unified_Ideograph</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Uppercase</code></li>
+					<li><code>Upper</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Uppercase"><code>Uppercase</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Variation_Selector</code></li>
+					<li><code>VS</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#Variation_Selector"><code>Variation_Selector</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>White_Space</code></li>
+					<li><code>space</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#White_Space"><code>White_Space</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>XID_Continue</code></li>
+					<li><code>XIDC</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#XID_Continue"><code>XID_Continue</code></a></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>XID_Start</code></li>
+					<li><code>XIDS</code></li>
+				</ul>
+			</td>
+			<td><a href="https://unicode.org/reports/tr44/#XID_Start"><code>XID_Start</code></a></td>
+		</tr>
+	</tbody></table>
+</figure></emu-table>
+</emu-import>
+  <p>The abstract operation UnicodeMatchProperty takes a parameter <var>p</var> that is a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points and performs the following steps:</p>
+  <emu-alg><ol><li>Assert: <var>p</var> is a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is identical to a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is a Unicode property name or property alias listed in the “Property name and aliases” column of <emu-xref href="#table-nonbinary-unicode-properties" id="_ref_5"><a href="#table-nonbinary-unicode-properties">Table 1</a></emu-xref> or <emu-xref href="#table-binary-unicode-properties" id="_ref_6"><a href="#table-binary-unicode-properties">Table 2</a></emu-xref>.</li><li>Let <var>p</var> be the canonical property name of <var>p</var> as given in the “Canonical property name” column of the corresponding row.</li><li>Return the <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points of <var>p</var>.
+  </li></ol></emu-alg>
+  <p>To ensure interoperability, implementations must not extend Unicode property support to the remaining properties.</p>
+  <p>Implementations must only recognize the property aliases listed in  <emu-xref href="#table-nonbinary-unicode-properties" id="_ref_7"><a href="#table-nonbinary-unicode-properties">Table 1</a></emu-xref> and  <emu-xref href="#table-binary-unicode-properties" id="_ref_8"><a href="#table-binary-unicode-properties">Table 2</a></emu-xref>.</p>
+  <p>Implementations must only recognize the property value aliases and canonical property value names listed in  <emu-xref href="#table-unicode-general-category-values" id="_ref_9"><a href="#table-unicode-general-category-values">Table 3</a></emu-xref> and  <emu-xref href="#table-unicode-script-values" id="_ref_10"><a href="#table-unicode-script-values">Table 4</a></emu-xref>.</p>
+  <emu-note><span class="note">Note 1</span><div class="note-contents">
+    <p>For example, <code>Script_Extensions</code> (property name) and <code>scx</code> (property alias) are valid, but <code>script_extensions</code> or <code>Scx</code> aren’t.</p>
+  </div></emu-note>
+  <emu-note><span class="note">Note 2</span><div class="note-contents">
+    <p>The listed properties form a superset of what  <a href="https://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a> requires.</p>
+  </div></emu-note>
+</emu-clause>
+
+<emu-clause id="sec-runtime-semantics-unicodematchpropertyvalue-p-v" aoid="UnicodeMatchPropertyValue">
+  <h1><span class="secnum">3</span>Runtime Semantics: UnicodeMatchPropertyValue ( <var>p</var>, <var>v</var> )</h1>
+  <p>The algorithm uses values from the following tables, which associate canonical Unicode property names and their supported values and value aliases:</p>
+  <emu-import href="table-unicode-general-category-values.html"><emu-table id="table-unicode-general-category-values"><figure><figcaption>Table 3: Value aliases and canonical values for the Unicode property  <a href="https://unicode.org/reports/tr18/#General_Category_Property"><code>General_Category</code></a></figcaption>
+	
+	<table class="real-table unicode-property-table">
+		<thead>
+			<tr>
+				<th>Property value and aliases</th>
+				<th>Canonical property value</th>
+			</tr>
+		</thead>
+		<tbody><tr>
+			<td>
+				<ul>
+					<li><code>Cased_Letter</code></li>
+					<li><code>LC</code></li>
+				</ul>
+			</td>
+			<td><code>Cased_Letter</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Close_Punctuation</code></li>
+					<li><code>Pe</code></li>
+				</ul>
+			</td>
+			<td><code>Close_Punctuation</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Connector_Punctuation</code></li>
+					<li><code>Pc</code></li>
+				</ul>
+			</td>
+			<td><code>Connector_Punctuation</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Control</code></li>
+					<li><code>Cc</code></li>
+					<li><code>cntrl</code></li>
+				</ul>
+			</td>
+			<td><code>Control</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Currency_Symbol</code></li>
+					<li><code>Sc</code></li>
+				</ul>
+			</td>
+			<td><code>Currency_Symbol</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Dash_Punctuation</code></li>
+					<li><code>Pd</code></li>
+				</ul>
+			</td>
+			<td><code>Dash_Punctuation</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Decimal_Number</code></li>
+					<li><code>Nd</code></li>
+					<li><code>digit</code></li>
+				</ul>
+			</td>
+			<td><code>Decimal_Number</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Enclosing_Mark</code></li>
+					<li><code>Me</code></li>
+				</ul>
+			</td>
+			<td><code>Enclosing_Mark</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Final_Punctuation</code></li>
+					<li><code>Pf</code></li>
+				</ul>
+			</td>
+			<td><code>Final_Punctuation</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Format</code></li>
+					<li><code>Cf</code></li>
+				</ul>
+			</td>
+			<td><code>Format</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Initial_Punctuation</code></li>
+					<li><code>Pi</code></li>
+				</ul>
+			</td>
+			<td><code>Initial_Punctuation</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Letter</code></li>
+					<li><code>L</code></li>
+				</ul>
+			</td>
+			<td><code>Letter</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Letter_Number</code></li>
+					<li><code>Nl</code></li>
+				</ul>
+			</td>
+			<td><code>Letter_Number</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Line_Separator</code></li>
+					<li><code>Zl</code></li>
+				</ul>
+			</td>
+			<td><code>Line_Separator</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Lowercase_Letter</code></li>
+					<li><code>Ll</code></li>
+				</ul>
+			</td>
+			<td><code>Lowercase_Letter</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Mark</code></li>
+					<li><code>M</code></li>
+					<li><code>Combining_Mark</code></li>
+				</ul>
+			</td>
+			<td><code>Mark</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Math_Symbol</code></li>
+					<li><code>Sm</code></li>
+				</ul>
+			</td>
+			<td><code>Math_Symbol</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Modifier_Letter</code></li>
+					<li><code>Lm</code></li>
+				</ul>
+			</td>
+			<td><code>Modifier_Letter</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Modifier_Symbol</code></li>
+					<li><code>Sk</code></li>
+				</ul>
+			</td>
+			<td><code>Modifier_Symbol</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Nonspacing_Mark</code></li>
+					<li><code>Mn</code></li>
+				</ul>
+			</td>
+			<td><code>Nonspacing_Mark</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Number</code></li>
+					<li><code>N</code></li>
+				</ul>
+			</td>
+			<td><code>Number</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Open_Punctuation</code></li>
+					<li><code>Ps</code></li>
+				</ul>
+			</td>
+			<td><code>Open_Punctuation</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Other</code></li>
+					<li><code>C</code></li>
+				</ul>
+			</td>
+			<td><code>Other</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Other_Letter</code></li>
+					<li><code>Lo</code></li>
+				</ul>
+			</td>
+			<td><code>Other_Letter</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Other_Number</code></li>
+					<li><code>No</code></li>
+				</ul>
+			</td>
+			<td><code>Other_Number</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Other_Punctuation</code></li>
+					<li><code>Po</code></li>
+				</ul>
+			</td>
+			<td><code>Other_Punctuation</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Other_Symbol</code></li>
+					<li><code>So</code></li>
+				</ul>
+			</td>
+			<td><code>Other_Symbol</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Paragraph_Separator</code></li>
+					<li><code>Zp</code></li>
+				</ul>
+			</td>
+			<td><code>Paragraph_Separator</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Private_Use</code></li>
+					<li><code>Co</code></li>
+				</ul>
+			</td>
+			<td><code>Private_Use</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Punctuation</code></li>
+					<li><code>P</code></li>
+					<li><code>punct</code></li>
+				</ul>
+			</td>
+			<td><code>Punctuation</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Separator</code></li>
+					<li><code>Z</code></li>
+				</ul>
+			</td>
+			<td><code>Separator</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Space_Separator</code></li>
+					<li><code>Zs</code></li>
+				</ul>
+			</td>
+			<td><code>Space_Separator</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Spacing_Mark</code></li>
+					<li><code>Mc</code></li>
+				</ul>
+			</td>
+			<td><code>Spacing_Mark</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Surrogate</code></li>
+					<li><code>Cs</code></li>
+				</ul>
+			</td>
+			<td><code>Surrogate</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Symbol</code></li>
+					<li><code>S</code></li>
+				</ul>
+			</td>
+			<td><code>Symbol</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Titlecase_Letter</code></li>
+					<li><code>Lt</code></li>
+				</ul>
+			</td>
+			<td><code>Titlecase_Letter</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Unassigned</code></li>
+					<li><code>Cn</code></li>
+				</ul>
+			</td>
+			<td><code>Unassigned</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Uppercase_Letter</code></li>
+					<li><code>Lu</code></li>
+				</ul>
+			</td>
+			<td><code>Uppercase_Letter</code></td>
+		</tr>
+	</tbody></table>
+</figure></emu-table>
+</emu-import>
+  <emu-import href="table-unicode-script-values.html"><emu-table id="table-unicode-script-values"><figure><figcaption>Table 4: Value aliases and canonical values for the Unicode properties  <a href="https://unicode.org/reports/tr24/#Script"><code>Script</code></a> and  <a href="https://unicode.org/reports/tr24/#Script_Extensions"><code>Script_Extensions</code></a></figcaption>
+	
+	<table class="real-table unicode-property-table">
+		<thead>
+			<tr>
+				<th>Property value and aliases</th>
+				<th>Canonical property value</th>
+			</tr>
+		</thead>
+		<tbody><tr>
+			<td>
+				<ul>
+					<li><code>Adlam</code></li>
+					<li><code>Adlm</code></li>
+				</ul>
+			</td>
+			<td><code>Adlam</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Ahom</code></li>
+					<li><code>Ahom</code></li>
+				</ul>
+			</td>
+			<td><code>Ahom</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Anatolian_Hieroglyphs</code></li>
+					<li><code>Hluw</code></li>
+				</ul>
+			</td>
+			<td><code>Anatolian_Hieroglyphs</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Arabic</code></li>
+					<li><code>Arab</code></li>
+				</ul>
+			</td>
+			<td><code>Arabic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Armenian</code></li>
+					<li><code>Armn</code></li>
+				</ul>
+			</td>
+			<td><code>Armenian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Avestan</code></li>
+					<li><code>Avst</code></li>
+				</ul>
+			</td>
+			<td><code>Avestan</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Balinese</code></li>
+					<li><code>Bali</code></li>
+				</ul>
+			</td>
+			<td><code>Balinese</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Bamum</code></li>
+					<li><code>Bamu</code></li>
+				</ul>
+			</td>
+			<td><code>Bamum</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Bassa_Vah</code></li>
+					<li><code>Bass</code></li>
+				</ul>
+			</td>
+			<td><code>Bassa_Vah</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Batak</code></li>
+					<li><code>Batk</code></li>
+				</ul>
+			</td>
+			<td><code>Batak</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Bengali</code></li>
+					<li><code>Beng</code></li>
+				</ul>
+			</td>
+			<td><code>Bengali</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Bhaiksuki</code></li>
+					<li><code>Bhks</code></li>
+				</ul>
+			</td>
+			<td><code>Bhaiksuki</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Bopomofo</code></li>
+					<li><code>Bopo</code></li>
+				</ul>
+			</td>
+			<td><code>Bopomofo</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Brahmi</code></li>
+					<li><code>Brah</code></li>
+				</ul>
+			</td>
+			<td><code>Brahmi</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Braille</code></li>
+					<li><code>Brai</code></li>
+				</ul>
+			</td>
+			<td><code>Braille</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Buginese</code></li>
+					<li><code>Bugi</code></li>
+				</ul>
+			</td>
+			<td><code>Buginese</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Buhid</code></li>
+					<li><code>Buhd</code></li>
+				</ul>
+			</td>
+			<td><code>Buhid</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Canadian_Aboriginal</code></li>
+					<li><code>Cans</code></li>
+				</ul>
+			</td>
+			<td><code>Canadian_Aboriginal</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Carian</code></li>
+					<li><code>Cari</code></li>
+				</ul>
+			</td>
+			<td><code>Carian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Caucasian_Albanian</code></li>
+					<li><code>Aghb</code></li>
+				</ul>
+			</td>
+			<td><code>Caucasian_Albanian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Chakma</code></li>
+					<li><code>Cakm</code></li>
+				</ul>
+			</td>
+			<td><code>Chakma</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Cham</code></li>
+					<li><code>Cham</code></li>
+				</ul>
+			</td>
+			<td><code>Cham</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Cherokee</code></li>
+					<li><code>Cher</code></li>
+				</ul>
+			</td>
+			<td><code>Cherokee</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Common</code></li>
+					<li><code>Zyyy</code></li>
+				</ul>
+			</td>
+			<td><code>Common</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Coptic</code></li>
+					<li><code>Copt</code></li>
+					<li><code>Qaac</code></li>
+				</ul>
+			</td>
+			<td><code>Coptic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Cuneiform</code></li>
+					<li><code>Xsux</code></li>
+				</ul>
+			</td>
+			<td><code>Cuneiform</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Cypriot</code></li>
+					<li><code>Cprt</code></li>
+				</ul>
+			</td>
+			<td><code>Cypriot</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Cyrillic</code></li>
+					<li><code>Cyrl</code></li>
+				</ul>
+			</td>
+			<td><code>Cyrillic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Deseret</code></li>
+					<li><code>Dsrt</code></li>
+				</ul>
+			</td>
+			<td><code>Deseret</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Devanagari</code></li>
+					<li><code>Deva</code></li>
+				</ul>
+			</td>
+			<td><code>Devanagari</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Duployan</code></li>
+					<li><code>Dupl</code></li>
+				</ul>
+			</td>
+			<td><code>Duployan</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Egyptian_Hieroglyphs</code></li>
+					<li><code>Egyp</code></li>
+				</ul>
+			</td>
+			<td><code>Egyptian_Hieroglyphs</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Elbasan</code></li>
+					<li><code>Elba</code></li>
+				</ul>
+			</td>
+			<td><code>Elbasan</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Ethiopic</code></li>
+					<li><code>Ethi</code></li>
+				</ul>
+			</td>
+			<td><code>Ethiopic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Georgian</code></li>
+					<li><code>Geor</code></li>
+				</ul>
+			</td>
+			<td><code>Georgian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Glagolitic</code></li>
+					<li><code>Glag</code></li>
+				</ul>
+			</td>
+			<td><code>Glagolitic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Gothic</code></li>
+					<li><code>Goth</code></li>
+				</ul>
+			</td>
+			<td><code>Gothic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Grantha</code></li>
+					<li><code>Gran</code></li>
+				</ul>
+			</td>
+			<td><code>Grantha</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Greek</code></li>
+					<li><code>Grek</code></li>
+				</ul>
+			</td>
+			<td><code>Greek</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Gujarati</code></li>
+					<li><code>Gujr</code></li>
+				</ul>
+			</td>
+			<td><code>Gujarati</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Gurmukhi</code></li>
+					<li><code>Guru</code></li>
+				</ul>
+			</td>
+			<td><code>Gurmukhi</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Han</code></li>
+					<li><code>Hani</code></li>
+				</ul>
+			</td>
+			<td><code>Han</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Hangul</code></li>
+					<li><code>Hang</code></li>
+				</ul>
+			</td>
+			<td><code>Hangul</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Hanunoo</code></li>
+					<li><code>Hano</code></li>
+				</ul>
+			</td>
+			<td><code>Hanunoo</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Hatran</code></li>
+					<li><code>Hatr</code></li>
+				</ul>
+			</td>
+			<td><code>Hatran</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Hebrew</code></li>
+					<li><code>Hebr</code></li>
+				</ul>
+			</td>
+			<td><code>Hebrew</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Hiragana</code></li>
+					<li><code>Hira</code></li>
+				</ul>
+			</td>
+			<td><code>Hiragana</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Imperial_Aramaic</code></li>
+					<li><code>Armi</code></li>
+				</ul>
+			</td>
+			<td><code>Imperial_Aramaic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Inherited</code></li>
+					<li><code>Zinh</code></li>
+					<li><code>Qaai</code></li>
+				</ul>
+			</td>
+			<td><code>Inherited</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Inscriptional_Pahlavi</code></li>
+					<li><code>Phli</code></li>
+				</ul>
+			</td>
+			<td><code>Inscriptional_Pahlavi</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Inscriptional_Parthian</code></li>
+					<li><code>Prti</code></li>
+				</ul>
+			</td>
+			<td><code>Inscriptional_Parthian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Javanese</code></li>
+					<li><code>Java</code></li>
+				</ul>
+			</td>
+			<td><code>Javanese</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Kaithi</code></li>
+					<li><code>Kthi</code></li>
+				</ul>
+			</td>
+			<td><code>Kaithi</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Kannada</code></li>
+					<li><code>Knda</code></li>
+				</ul>
+			</td>
+			<td><code>Kannada</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Katakana</code></li>
+					<li><code>Kana</code></li>
+				</ul>
+			</td>
+			<td><code>Katakana</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Kayah_Li</code></li>
+					<li><code>Kali</code></li>
+				</ul>
+			</td>
+			<td><code>Kayah_Li</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Kharoshthi</code></li>
+					<li><code>Khar</code></li>
+				</ul>
+			</td>
+			<td><code>Kharoshthi</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Khmer</code></li>
+					<li><code>Khmr</code></li>
+				</ul>
+			</td>
+			<td><code>Khmer</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Khojki</code></li>
+					<li><code>Khoj</code></li>
+				</ul>
+			</td>
+			<td><code>Khojki</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Khudawadi</code></li>
+					<li><code>Sind</code></li>
+				</ul>
+			</td>
+			<td><code>Khudawadi</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Lao</code></li>
+					<li><code>Laoo</code></li>
+				</ul>
+			</td>
+			<td><code>Lao</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Latin</code></li>
+					<li><code>Latn</code></li>
+				</ul>
+			</td>
+			<td><code>Latin</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Lepcha</code></li>
+					<li><code>Lepc</code></li>
+				</ul>
+			</td>
+			<td><code>Lepcha</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Limbu</code></li>
+					<li><code>Limb</code></li>
+				</ul>
+			</td>
+			<td><code>Limbu</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Linear_A</code></li>
+					<li><code>Lina</code></li>
+				</ul>
+			</td>
+			<td><code>Linear_A</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Linear_B</code></li>
+					<li><code>Linb</code></li>
+				</ul>
+			</td>
+			<td><code>Linear_B</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Lisu</code></li>
+					<li><code>Lisu</code></li>
+				</ul>
+			</td>
+			<td><code>Lisu</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Lycian</code></li>
+					<li><code>Lyci</code></li>
+				</ul>
+			</td>
+			<td><code>Lycian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Lydian</code></li>
+					<li><code>Lydi</code></li>
+				</ul>
+			</td>
+			<td><code>Lydian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Mahajani</code></li>
+					<li><code>Mahj</code></li>
+				</ul>
+			</td>
+			<td><code>Mahajani</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Malayalam</code></li>
+					<li><code>Mlym</code></li>
+				</ul>
+			</td>
+			<td><code>Malayalam</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Mandaic</code></li>
+					<li><code>Mand</code></li>
+				</ul>
+			</td>
+			<td><code>Mandaic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Manichaean</code></li>
+					<li><code>Mani</code></li>
+				</ul>
+			</td>
+			<td><code>Manichaean</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Marchen</code></li>
+					<li><code>Marc</code></li>
+				</ul>
+			</td>
+			<td><code>Marchen</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Masaram_Gondi</code></li>
+					<li><code>Gonm</code></li>
+				</ul>
+			</td>
+			<td><code>Masaram_Gondi</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Meetei_Mayek</code></li>
+					<li><code>Mtei</code></li>
+				</ul>
+			</td>
+			<td><code>Meetei_Mayek</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Mende_Kikakui</code></li>
+					<li><code>Mend</code></li>
+				</ul>
+			</td>
+			<td><code>Mende_Kikakui</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Meroitic_Cursive</code></li>
+					<li><code>Merc</code></li>
+				</ul>
+			</td>
+			<td><code>Meroitic_Cursive</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Meroitic_Hieroglyphs</code></li>
+					<li><code>Mero</code></li>
+				</ul>
+			</td>
+			<td><code>Meroitic_Hieroglyphs</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Miao</code></li>
+					<li><code>Plrd</code></li>
+				</ul>
+			</td>
+			<td><code>Miao</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Modi</code></li>
+					<li><code>Modi</code></li>
+				</ul>
+			</td>
+			<td><code>Modi</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Mongolian</code></li>
+					<li><code>Mong</code></li>
+				</ul>
+			</td>
+			<td><code>Mongolian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Mro</code></li>
+					<li><code>Mroo</code></li>
+				</ul>
+			</td>
+			<td><code>Mro</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Multani</code></li>
+					<li><code>Mult</code></li>
+				</ul>
+			</td>
+			<td><code>Multani</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Myanmar</code></li>
+					<li><code>Mymr</code></li>
+				</ul>
+			</td>
+			<td><code>Myanmar</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Nabataean</code></li>
+					<li><code>Nbat</code></li>
+				</ul>
+			</td>
+			<td><code>Nabataean</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>New_Tai_Lue</code></li>
+					<li><code>Talu</code></li>
+				</ul>
+			</td>
+			<td><code>New_Tai_Lue</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Newa</code></li>
+					<li><code>Newa</code></li>
+				</ul>
+			</td>
+			<td><code>Newa</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Nko</code></li>
+					<li><code>Nkoo</code></li>
+				</ul>
+			</td>
+			<td><code>Nko</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Nushu</code></li>
+					<li><code>Nshu</code></li>
+				</ul>
+			</td>
+			<td><code>Nushu</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Ogham</code></li>
+					<li><code>Ogam</code></li>
+				</ul>
+			</td>
+			<td><code>Ogham</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Ol_Chiki</code></li>
+					<li><code>Olck</code></li>
+				</ul>
+			</td>
+			<td><code>Ol_Chiki</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Old_Hungarian</code></li>
+					<li><code>Hung</code></li>
+				</ul>
+			</td>
+			<td><code>Old_Hungarian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Old_Italic</code></li>
+					<li><code>Ital</code></li>
+				</ul>
+			</td>
+			<td><code>Old_Italic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Old_North_Arabian</code></li>
+					<li><code>Narb</code></li>
+				</ul>
+			</td>
+			<td><code>Old_North_Arabian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Old_Permic</code></li>
+					<li><code>Perm</code></li>
+				</ul>
+			</td>
+			<td><code>Old_Permic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Old_Persian</code></li>
+					<li><code>Xpeo</code></li>
+				</ul>
+			</td>
+			<td><code>Old_Persian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Old_South_Arabian</code></li>
+					<li><code>Sarb</code></li>
+				</ul>
+			</td>
+			<td><code>Old_South_Arabian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Old_Turkic</code></li>
+					<li><code>Orkh</code></li>
+				</ul>
+			</td>
+			<td><code>Old_Turkic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Oriya</code></li>
+					<li><code>Orya</code></li>
+				</ul>
+			</td>
+			<td><code>Oriya</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Osage</code></li>
+					<li><code>Osge</code></li>
+				</ul>
+			</td>
+			<td><code>Osage</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Osmanya</code></li>
+					<li><code>Osma</code></li>
+				</ul>
+			</td>
+			<td><code>Osmanya</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Pahawh_Hmong</code></li>
+					<li><code>Hmng</code></li>
+				</ul>
+			</td>
+			<td><code>Pahawh_Hmong</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Palmyrene</code></li>
+					<li><code>Palm</code></li>
+				</ul>
+			</td>
+			<td><code>Palmyrene</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Pau_Cin_Hau</code></li>
+					<li><code>Pauc</code></li>
+				</ul>
+			</td>
+			<td><code>Pau_Cin_Hau</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Phags_Pa</code></li>
+					<li><code>Phag</code></li>
+				</ul>
+			</td>
+			<td><code>Phags_Pa</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Phoenician</code></li>
+					<li><code>Phnx</code></li>
+				</ul>
+			</td>
+			<td><code>Phoenician</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Psalter_Pahlavi</code></li>
+					<li><code>Phlp</code></li>
+				</ul>
+			</td>
+			<td><code>Psalter_Pahlavi</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Rejang</code></li>
+					<li><code>Rjng</code></li>
+				</ul>
+			</td>
+			<td><code>Rejang</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Runic</code></li>
+					<li><code>Runr</code></li>
+				</ul>
+			</td>
+			<td><code>Runic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Samaritan</code></li>
+					<li><code>Samr</code></li>
+				</ul>
+			</td>
+			<td><code>Samaritan</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Saurashtra</code></li>
+					<li><code>Saur</code></li>
+				</ul>
+			</td>
+			<td><code>Saurashtra</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Sharada</code></li>
+					<li><code>Shrd</code></li>
+				</ul>
+			</td>
+			<td><code>Sharada</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Shavian</code></li>
+					<li><code>Shaw</code></li>
+				</ul>
+			</td>
+			<td><code>Shavian</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Siddham</code></li>
+					<li><code>Sidd</code></li>
+				</ul>
+			</td>
+			<td><code>Siddham</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>SignWriting</code></li>
+					<li><code>Sgnw</code></li>
+				</ul>
+			</td>
+			<td><code>SignWriting</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Sinhala</code></li>
+					<li><code>Sinh</code></li>
+				</ul>
+			</td>
+			<td><code>Sinhala</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Sora_Sompeng</code></li>
+					<li><code>Sora</code></li>
+				</ul>
+			</td>
+			<td><code>Sora_Sompeng</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Soyombo</code></li>
+					<li><code>Soyo</code></li>
+				</ul>
+			</td>
+			<td><code>Soyombo</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Sundanese</code></li>
+					<li><code>Sund</code></li>
+				</ul>
+			</td>
+			<td><code>Sundanese</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Syloti_Nagri</code></li>
+					<li><code>Sylo</code></li>
+				</ul>
+			</td>
+			<td><code>Syloti_Nagri</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Syriac</code></li>
+					<li><code>Syrc</code></li>
+				</ul>
+			</td>
+			<td><code>Syriac</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Tagalog</code></li>
+					<li><code>Tglg</code></li>
+				</ul>
+			</td>
+			<td><code>Tagalog</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Tagbanwa</code></li>
+					<li><code>Tagb</code></li>
+				</ul>
+			</td>
+			<td><code>Tagbanwa</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Tai_Le</code></li>
+					<li><code>Tale</code></li>
+				</ul>
+			</td>
+			<td><code>Tai_Le</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Tai_Tham</code></li>
+					<li><code>Lana</code></li>
+				</ul>
+			</td>
+			<td><code>Tai_Tham</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Tai_Viet</code></li>
+					<li><code>Tavt</code></li>
+				</ul>
+			</td>
+			<td><code>Tai_Viet</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Takri</code></li>
+					<li><code>Takr</code></li>
+				</ul>
+			</td>
+			<td><code>Takri</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Tamil</code></li>
+					<li><code>Taml</code></li>
+				</ul>
+			</td>
+			<td><code>Tamil</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Tangut</code></li>
+					<li><code>Tang</code></li>
+				</ul>
+			</td>
+			<td><code>Tangut</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Telugu</code></li>
+					<li><code>Telu</code></li>
+				</ul>
+			</td>
+			<td><code>Telugu</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Thaana</code></li>
+					<li><code>Thaa</code></li>
+				</ul>
+			</td>
+			<td><code>Thaana</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Thai</code></li>
+					<li><code>Thai</code></li>
+				</ul>
+			</td>
+			<td><code>Thai</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Tibetan</code></li>
+					<li><code>Tibt</code></li>
+				</ul>
+			</td>
+			<td><code>Tibetan</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Tifinagh</code></li>
+					<li><code>Tfng</code></li>
+				</ul>
+			</td>
+			<td><code>Tifinagh</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Tirhuta</code></li>
+					<li><code>Tirh</code></li>
+				</ul>
+			</td>
+			<td><code>Tirhuta</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Ugaritic</code></li>
+					<li><code>Ugar</code></li>
+				</ul>
+			</td>
+			<td><code>Ugaritic</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Vai</code></li>
+					<li><code>Vaii</code></li>
+				</ul>
+			</td>
+			<td><code>Vai</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Warang_Citi</code></li>
+					<li><code>Wara</code></li>
+				</ul>
+			</td>
+			<td><code>Warang_Citi</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Yi</code></li>
+					<li><code>Yiii</code></li>
+				</ul>
+			</td>
+			<td><code>Yi</code></td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li><code>Zanabazar_Square</code></li>
+					<li><code>Zanb</code></li>
+				</ul>
+			</td>
+			<td><code>Zanabazar_Square</code></td>
+		</tr>
+	</tbody></table>
+</figure></emu-table>
+</emu-import>
+  <p>The abstract operation UnicodeMatchPropertyValue takes two parameters <var>p</var> and <var>v</var>, each of which is a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points, and performs the following steps:</p>
+  <emu-alg><ol><li>Assert: <var>p</var> is a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is identical to a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is a canonical, unaliased Unicode property name listed in the “Canonical property name” column of <emu-xref href="#table-nonbinary-unicode-properties" id="_ref_11"><a href="#table-nonbinary-unicode-properties">Table 1</a></emu-xref>.</li><li>Assert: <var>v</var> is a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is identical to a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is a property value or property value alias for Unicode property <var>p</var> listed in the “Property value and aliases” column of <emu-xref href="#table-unicode-general-category-values" id="_ref_12"><a href="#table-unicode-general-category-values">Table 3</a></emu-xref> or <emu-xref href="#table-unicode-script-values" id="_ref_13"><a href="#table-unicode-script-values">Table 4</a></emu-xref>.</li><li>Let <var>value</var> be the canonical property value of <var>v</var> as given in the “Canonical property value” column of the corresponding row.</li><li>Return the <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points of <var>value</var>.
+  </li></ol></emu-alg>
+  <p>Only the canonical property values and property value aliases listed in  <emu-xref href="#table-unicode-general-category-values" id="_ref_14"><a href="#table-unicode-general-category-values">Table 3</a></emu-xref> and  <emu-xref href="#table-unicode-script-values" id="_ref_15"><a href="#table-unicode-script-values">Table 4</a></emu-xref> must be recognized.</p>
+  <emu-note><span class="note">Note 1</span><div class="note-contents">
+    <p>For example, <code>Xpeo</code> and <code>Old_Persian</code> are valid <code>Script_Extension</code> values, but <code>xpeo</code> and <code>Old Persian</code> aren’t.</p>
+  </div></emu-note>
+  <emu-note><span class="note">Note 2</span><div class="note-contents">
+    <p>This algorithm differs from  <a href="https://unicode.org/reports/tr44/#Matching_Symbolic">the matching rules for symbolic values listed in UAX44</a>: case,  <emu-xref href="#sec-white-space"><a href="https://tc39.github.io/ecma262/#sec-white-space">white space</a></emu-xref>, U+002D (HYPHEN-MINUS), and U+005F (LOW LINE) are not ignored, and the <code>Is</code> prefix is not supported.</p>
+  </div></emu-note>
+</emu-clause>
+
+<hr>
+
+<p><ins class="block">The following is appended to the list of productions in  <a href="https://tc39.github.io/ecma262/#sec-characterclassescape">21.2.2.12 CharacterClassEscape</a>.</ins></p>
+
+<p>The production  <emu-grammar><emu-production name="CharacterClassEscape" type="lexical" collapsed="" class=" inline">
+    <emu-nt><a href="#prod-CharacterClassEscape">CharacterClassEscape</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="fdcb679b"><emu-t>\p{</emu-t><emu-nt id="_ref_48"><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-t>}</emu-t></emu-rhs>
+</emu-production></emu-grammar> evaluates by returning the CharSet containing all Unicode code points included in the CharSet returned by  <emu-nt id="_ref_49"><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt>.</p>
+<p>The production  <emu-grammar><emu-production name="CharacterClassEscape" type="lexical" collapsed="" class=" inline">
+    <emu-nt><a href="#prod-CharacterClassEscape">CharacterClassEscape</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="a2058266"><emu-t>\P{</emu-t><emu-nt id="_ref_50"><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-t>}</emu-t></emu-rhs>
+</emu-production></emu-grammar> evaluates by returning the CharSet containing all Unicode code points not included in the CharSet returned by  <emu-nt id="_ref_51"><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt>.</p>
+<p>The production  <emu-grammar><emu-production name="UnicodePropertyValueExpression" type="lexical" collapsed="" class=" inline">
+    <emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="b11de407"><emu-nt id="_ref_52"><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt><emu-t>=</emu-t><emu-nt id="_ref_53"><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt></emu-rhs>
+</emu-production></emu-grammar> evaluates as follows:</p>
+<emu-alg><ol><li>Let <var>p</var> be !&nbsp;<emu-xref aoid="UnicodeMatchProperty" id="_ref_19"><a href="#sec-runtime-semantics-unicodematchproperty-p">UnicodeMatchProperty</a></emu-xref>(<var>UnicodePropertyName</var>).</li><li>Assert: <var>p</var> is a Unicode property name or property alias listed in the “Property name and aliases” column of <emu-xref href="#table-nonbinary-unicode-properties" id="_ref_16"><a href="#table-nonbinary-unicode-properties">Table 1</a></emu-xref>.</li><li>Let <var>v</var> be !&nbsp;<emu-xref aoid="UnicodeMatchPropertyValue" id="_ref_20"><a href="#sec-runtime-semantics-unicodematchpropertyvalue-p-v">UnicodeMatchPropertyValue</a></emu-xref>(<var>p</var>, <var>UnicodePropertyValue</var>).</li><li>Return the CharSet containing all Unicode code points whose character database definition includes the property <var>p</var> with value <var>v</var>.</li></ol></emu-alg>
+<p>The production  <emu-grammar><emu-production name="UnicodePropertyValueExpression" type="lexical" collapsed="" class=" inline">
+    <emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="25d94190"><emu-nt id="_ref_54"><a href="#prod-LoneUnicodePropertyNameOrValue">LoneUnicodePropertyNameOrValue</a></emu-nt></emu-rhs>
+</emu-production></emu-grammar> evaluates as follows:</p>
+<emu-alg><ol><li>If !&nbsp;<emu-xref aoid="UnicodeMatchPropertyValue" id="_ref_21"><a href="#sec-runtime-semantics-unicodematchpropertyvalue-p-v">UnicodeMatchPropertyValue</a></emu-xref>(<code>"General_Category"</code>, <var>LoneUnicodePropertyNameOrValue</var>) is identical to a <emu-xref href="#sec-list-and-record-specification-type"><a href="https://tc39.github.io/ecma262/#sec-list-and-record-specification-type">List</a></emu-xref> of Unicode code points that is the name of a Unicode general category or general category alias listed in the “Property value and aliases” column of <emu-xref href="#table-unicode-general-category-values" id="_ref_17"><a href="#table-unicode-general-category-values">Table 3</a></emu-xref>, then<ol><li>Return the CharSet containing all Unicode code points whose character database definition includes the property <code>General_Category</code> with value <var>LoneUnicodePropertyNameOrValue</var>.</li></ol></li><li>Let <var>p</var> be !&nbsp;<emu-xref aoid="UnicodeMatchProperty" id="_ref_22"><a href="#sec-runtime-semantics-unicodematchproperty-p">UnicodeMatchProperty</a></emu-xref>(<var>LoneUnicodePropertyNameOrValue</var>).</li><li>Assert: <var>p</var> is a binary Unicode property or binary property alias listed in the “Property name and aliases” column of <emu-xref href="#table-binary-unicode-properties" id="_ref_18"><a href="#table-binary-unicode-properties">Table 2</a></emu-xref>.</li><li>Return the CharSet containing all Unicode code points whose character database definition includes the property <var>p</var> with value <emu-nt>True</emu-nt>.</li></ol></emu-alg>
+
+<p><ins class="block">The following is appended to  <a href="https://tc39.github.io/ecma262/#sec-bibliography">the bibliography</a>.</ins></p>
+
+<!-- es6num="F" -->
+<emu-annex id="sec-bibliography">
+  <h1><span class="secnum">A</span>Bibliography</h1>
+  <ol>
+    <li>
+      <i>Unicode Standard Annex #18: Unicode Regular Expressions</i>, available at &lt;<a href="https://unicode.org/reports/tr18/">https://unicode.org/reports/tr18/</a>&gt;
+    
+    </li>
+    <li>
+      <i>Unicode Standard Annex #24: Unicode <code>Script</code> Property</i>, available at &lt;<a href="https://unicode.org/reports/tr24/">https://unicode.org/reports/tr24/</a>&gt;
+    
+    </li>
+    <li>
+      <i>Unicode Standard Annex #44: Unicode Character Database</i>, available at &lt;<a href="https://unicode.org/reports/tr44/">https://unicode.org/reports/tr44/</a>&gt;
+    
+    </li>
+    <li>
+      <i>Unicode Technical Report #51: Unicode Emoji</i>, available at &lt;<a href="https://unicode.org/reports/tr51/">https://unicode.org/reports/tr51/</a>&gt;
+    
+    </li>
+  </ol>
+</emu-annex>
+</div></body>
