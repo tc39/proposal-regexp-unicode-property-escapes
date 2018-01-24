@@ -180,7 +180,7 @@ contributors: Mathias Bynens
 </emu-alg>
 <p>The production <emu-grammar>UnicodePropertyValueExpression :: LoneUnicodePropertyNameOrValue</emu-grammar> evaluates as follows:</p>
 <emu-alg>
-  1. If ! UnicodeMatchPropertyValue(`"General_Category"`, _LoneUnicodePropertyNameOrValue_) is not identical to a List of Unicode code points that is the name of a Unicode general category or general category alias listed in the “Property value and aliases” column of <emu-xref href="#table-unicode-general-category-values"></emu-xref>, then
+  1. If ! UnicodeMatchPropertyValue(`"General_Category"`, _LoneUnicodePropertyNameOrValue_) is identical to a List of Unicode code points that is the name of a Unicode general category or general category alias listed in the “Property value and aliases” column of <emu-xref href="#table-unicode-general-category-values"></emu-xref>, then
     1. Return the CharSet containing all Unicode code points whose character database definition includes the property `General_Category` with value _LoneUnicodePropertyNameOrValue_.
   1. Let _property_ be ! UnicodeMatchProperty(_LoneUnicodePropertyNameOrValue_).
   1. Assert: _property_ is a binary Unicode property or binary property alias listed in the “Property name and aliases” column of <emu-xref href="#table-binary-unicode-properties"></emu-xref>.
