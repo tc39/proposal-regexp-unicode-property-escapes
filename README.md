@@ -284,8 +284,8 @@ Match ECMAScript [`IdentifierStart`](https://tc39.github.io/ecma262/#prod-Identi
 
 ```js
 const regexIdentifierStart = /[$_\p{ID_Start}]/u;
-const regexIdentifierPart = /[$_\u200C\u200D\p{ID_Continue}]/u;
-const regexIdentifierName = /^(?:[$_\p{ID_Start}])(?:[$_\u200C\u200D\p{ID_Continue}])*$/u;
+const regexIdentifierPart = /[$\u200C\u200D\p{ID_Continue}]/u;
+const regexIdentifierName = /^(?:[$_\p{ID_Start}])(?:[$\u200C\u200D\p{ID_Continue}])*$/u;
 ```
 
 ## Specification
